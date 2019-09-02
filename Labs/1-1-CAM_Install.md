@@ -167,7 +167,7 @@ EOF
 
 
 
-### Create deployment secret
+### Create an API key
 
 From the **boot** node terminal run the following  command 
 

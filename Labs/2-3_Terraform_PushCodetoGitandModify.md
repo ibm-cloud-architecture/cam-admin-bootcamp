@@ -69,18 +69,14 @@ While still in the GitLab UI, you need to add a personal access token that will 
 1. From the terminal emulator previously opened, run the following commands
 
    ```
-   cd ~/Terraform
-   mkdir gitlab
-   cd gitlab
+   cd ~/Documents/cam-admin-bootcamp
    ```
 
-2. Now you are going to 'clone' the Master project onto the boot node and then redirect the downloaded files to your new project. Do this by executing these instructions ...
+2. Now you are going to reassociate the local repo (cloned from the previous lab) to your new GitLabs project. Do this by executing these instructions ...
 
    ```
    git config --global user.email "labadmin@ibm.com"
    git config --global user.name "labadmin"
-   git clone https://github.com/jdiggity22/CAMLabs.git
-   cd CAMLabs
    rm -rf .git
    git init
    git remote add origin ssh://git@gitlab.10.10.1.4.nip.io:2222/labadmin/teamx-project1.git

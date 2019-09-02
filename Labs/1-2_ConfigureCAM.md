@@ -28,7 +28,7 @@ In this lab you will go through the process of creating a CAM connection, testin
 
     ![Lab_1-2_C](../images/Lab_1-2_C.png)
 
-6. In the Creat Connection page, set the following:
+6. In the Create Connection page, set the following:
 
     - Select a Cloud Provide: **VMware vSphere.** 
     - Select a Name Space: make this globally accessable - **ON**

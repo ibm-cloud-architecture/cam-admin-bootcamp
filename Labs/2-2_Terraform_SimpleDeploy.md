@@ -13,16 +13,14 @@ Execute this section from the **Boot** node.
 2. Create a new folder for the terraform files and clone the Lab repository. Then remove the .git folder to stop any changes being made to the original by mistake (effectively disconnecting your clone from Git)
 
    ```
-   mkdir Terraform
-   cd Terraforrm
-   git clone https://github.com/jdiggity22/CAMLabs.git
-   rm -rf ~/Terraform/CAMLabs/.git
+   cd ~/Documents
+   git clone https://github.com/ibm-cloud-architecture/cam-admin-bootcamp.git
    ```
 
 3. Change to the terraform working directory
 
    ```
-   cd ~/Terraform/CAMLabs/Terraform/Lab2
+   cd ~/Documents/cam-admin-bootcamp/Terraform/Lab2
    ```
 
 4. Initialize this terraform working directory. 
