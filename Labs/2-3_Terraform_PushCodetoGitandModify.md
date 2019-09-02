@@ -99,7 +99,7 @@ While still in the GitLab UI, you need to add a personal access token that will 
 1. From the terminal emulator previously opened, run the following commands
 
    ```
-   cd ~/Terraform/gitlab/CAMLabs/Terraform/Lab2
+   cd ~/Documents/cam-admin-bootcamp/Terraform/Lab2
    vi terraform.tfvars
    ```
 2. Search for the line containing **nodes = "1"** and change the '1' to a '2'

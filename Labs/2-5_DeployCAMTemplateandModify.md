@@ -146,7 +146,7 @@ NOTE: All these steps will take place on the boot node
 1. Launch the terminal emulator and change to the folder you previously created your cam project in during lab exercise **2-3 Terraform Push Code to Git**
 
    ```
-   cd ~/Terraform/gitlab/<your_project_name>/Terraform
+   cd ~/~/Documents/cam-admin-bootcamp/Terraform
    ```
 
 2. Edit the camvariables.json file with **vi Lab2/camvariables.json** and locate the line which contains "nodes". Change the number from "1" to "2". Also change the default instance name from "camlab2vm" to "newlab2vms". Save the changes with **:wq!**
