@@ -8,7 +8,7 @@ In this section we will walk through the process of authenticating to the ICP en
 
 Note: Execute this section from the **Master** node.
 
-1. open the **Master** node and login as sysadmin (passw0rd)
+1. Open the **Master** node and login as sysadmin (passw0rd)
 
 2. Open a terminal and enter the following command to run as 'root' (passw0rd)
 
@@ -48,9 +48,9 @@ cloudctl catalog load-archive --archive /cam_images/icp-cam-x86_64-3.1.2.0.tar.g
 
 ## Create Persistent Volumes
 
-In this section we will create the backend persistant volumes required by CAM. In this environment we will be using NFS for our backed storage. The exports have been created for already and we are using the NFS node in SkyTap as our NFS server.
+In this section we will create the backend persistent volumes required by CAM. In this environment we will be using NFS for our backed storage. The exports have been created for already and we are using the NFS node in SkyTap as our NFS server.
 
-The following NFS exports have been created to support our persitent volumes.
+The following NFS exports have been created to support our persistent volumes.
 
 ```
 /export *(rw,insecure,no_subtree_check,async)
@@ -82,7 +82,7 @@ cloudctl login -a https://10.10.1.2:8443 --skip-ssl-validation -n services
 
 ​	If successful you should see the same screen as show above in step 2
 
-3. Copy and paste the following 4 commands below, to create the Persistant Volumes.
+3. Copy and paste the following 4 commands below, to create the Persistent Volumes.
 
 command for **cam-mongo-pv**
 ```
@@ -182,7 +182,7 @@ cloudctl iam service-api-key-create ${serviceApiKeyName} ${serviceIDName} -d 'Ap
 
 **Note:** Make sure all the command are executed correctly. Sometimes you need to hit enter to execute the last command. Make sure your output looks similar to the output below.
 
-When this command completes you should see the followin output:
+When this command completes you should see the following output:
 
 ```
 Creating API key service-deploy-api-key of service service-deploy as admin...

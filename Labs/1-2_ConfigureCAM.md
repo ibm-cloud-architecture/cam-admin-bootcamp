@@ -1,6 +1,6 @@
 # CAM Configuration
 
-In this lab you will go through the process of creating a CAM connection, testing it and then deployiong a template.  This lab should take between xx -xx min.
+In this lab you will go through the process of creating a CAM connection, testing it and then deploying a template.  This lab should take between xx -xx min.
 
 ### Create a Connection
 
@@ -31,7 +31,7 @@ In this lab you will go through the process of creating a CAM connection, testin
 6. In the Create Connection page, set the following:
 
     - Select a Cloud Provide: **VMware vSphere.** 
-    - Select a Name Space: make this globally accessable - **ON**
+    - Select a Name Space: make this globally accessible - **ON**
     - Enter a unuique  connection name:
 
     ​		   Ex.  ***Team#*_VMware**

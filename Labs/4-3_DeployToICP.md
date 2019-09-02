@@ -26,7 +26,7 @@ Using Menu -> Library -> Services, click on **Create a Service** called **TeamX_
 
 Under the **Composition** tab, search for nodejs, which should find the Helm chart already defined in ICP.
 
-NOTE: If the helm chart is not found, refresh the catalog in ICP by logging into the ICP UI, and selecting Menu -> Manage -> Helm Repositories, then choosiing **Sync repositories** and try again.
+NOTE: If the helm chart is not found, refresh the catalog in ICP by logging into the ICP UI, and selecting Menu -> Manage -> Helm Repositories, then choosing **Sync repositories** and try again.
 
 ![img](../images/LAB_4-3_B.png)
 
@@ -34,7 +34,7 @@ Drag and drop the **ibm-nodejs-sample** chart into the Primary Flow between the 
 
 In the details panel on the righthand side, select the Cloud Connection created in the first step.
 
-In the same righthand panel, click on the **Parameters** tab and change the **namepsace** to **default**.
+In the same righthand panel, click on the **Parameters** tab and change the **namespace** to **default**.
 
 ![img](../images/LAB_4-3_C2.png)
 

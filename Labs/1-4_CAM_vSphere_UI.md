@@ -18,7 +18,7 @@
 
 ### Review UI for deployed instance:
 
-1. Goto Deployed Instances > Templates.  here you wil see the VM instance you created.  It should be up and runnig
+1. Goto Deployed Instances > Templates.  here you will see the VM instance you created.  It should be up and running
 
 2. Then Under Deployed Instances > Templates, select the Instance you just finished creating 
 
@@ -40,7 +40,7 @@
 
    - **Overview:**
 
-     In this tab you can see the Template Name, Instance Details and Activity.  you can also see the 	  Resourse Details.
+     In this tab you can see the Template Name, Instance Details and Activity.  you can also see the 	  Resource Details.
 
    - **Modify:**
 
@@ -48,7 +48,7 @@
 
    - **Snapshots:**
 
-     in thsi Tab you can capture and revert to different states  of a Virtual Machine.
+     In this Tab you can capture and revert to different states  of a Virtual Machine.
 
    - **Log File:**
 
@@ -72,13 +72,13 @@
 
    ​	2) Delete Instance
 
-4. Select **Destroy Resource**.  This will bring up a dialog box and you will have to type "destroy" into the highlighted imput box and then Click **Destroy**
+4. Select **Destroy Resource**.  This will bring up a dialog box and you will have to type "destroy" into the highlighted input box and then Click **Destroy**
 
    ![Lab_1-4_F](../images/Lab_1-4_F.png)
 
 
 
-5. Select **Delete Instance**. This will bring up a dialog box and you will have to type "delete" into the highlighted imput box and then Click **Delete**
+5. Select **Delete Instance**. This will bring up a dialog box and you will have to type "delete" into the highlighted input box and then Click **Delete**
 
    
 

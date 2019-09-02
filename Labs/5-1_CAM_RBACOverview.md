@@ -88,7 +88,7 @@ To create a team follow these instructions ....
 
       i. Click on the team name 
 
-      ii. Click on the **Resoures** tab
+      ii. Click on the **Resources** tab
 
       iii. Click on the **Manage resources** button. This will present a list of possible resources the team can be allocated responsibility for. This includes namespaces, helm repositories (pulled in from ICP) and directory servers
 
@@ -119,7 +119,7 @@ The following set of actions will demonstrate how different users will have the 
 
 All these actions will be carried out via the CAM web interface.
 
-To switch users, logout using the profile icon in the top right on the page and select **Log Out**. This will take you back to the ICP login screen. After loggin in as the required user, change back to the CAM UI using http://10.10.1.2:30000/
+To switch users, logout using the profile icon in the top right on the page and select **Log Out**. This will take you back to the ICP login screen. Afterwards login as the next user and navigate back to the CAM UI using http://10.10.1.2:30000/
 
 ### Test Case 1 - Bob the Operator
 

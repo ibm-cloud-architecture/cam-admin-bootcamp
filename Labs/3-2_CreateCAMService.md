@@ -36,7 +36,6 @@ Click on Menu -> Library -> Services
 
    ![img](../images/LAB_3-4_B1.png)
    
-
 7. In the right-hand information panel, fill in the following
 
    Input URL: **https://gitlab.10.10.1.4.nip.io/api/v4/projects/2/issues?private_token=<your_personal_access_token>**
@@ -105,7 +104,7 @@ Click on Menu -> Library -> Services
    End-User Permission: Invisible
    Value:               passw0rd
    ```
- 
+
 3. Now you need to **Link** the template parameters with the parameters just created. To do this expand the template under the **Activity Parameters** section and locate the Parameter Key team_number. 
 
    Click on the 3 dots to the right and choose **Edit**. Click on the **Link** tab and select the **team_number** Input Parameter created in the previous steps by clicking on + sign to the right.
@@ -160,7 +159,7 @@ Click on Menu -> Library -> Services
 
 6. Enter you team number into the Team Number field
 
-7. Enter a unique virtual machine number (1-10). This is to handle mulitple deployments of the same service and will determine the virtual machines hostname and IP.
+7. Enter a unique virtual machine number (1-10). This is to handle multiple deployments of the same service and will determine the virtual machines hostname and IP.
 
 8. Click on **Create Instance**
 

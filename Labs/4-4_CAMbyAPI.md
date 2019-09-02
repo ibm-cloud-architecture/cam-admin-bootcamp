@@ -41,10 +41,10 @@ You can import a json formatted file that contains individual requests.
 
 1. On the left sidebar a new collection should now exist called `cam-api`
 
-1. Click on the collection and a list of requests will apear. Explore through each of the requests taking note the request type (GET, POST, DELETE) the url endpoint for the request.
+1. Click on the collection and a list of requests will appear. Explore through each of the requests taking note the request type (GET, POST, DELETE) the url endpoint for the request.
 
 ![Lab_4-4_C](../images/Lab_4-4_C.png)
- 
+
 ## Importing Postman Environment
 Environments can be setup to make the collection more reusable.
 
@@ -60,7 +60,7 @@ Environments can be selected in the upper righthand of the UI.
 
 ![Lab_4-4_A](../images/Lab_4-4_A.png)
 
-Selecting the eye next to the dropdown allow you to see the intial and current environment and global variables.
+Selecting the eye next to the dropdown allow you to see the initial and current environment and global variables.
 
 ![Lab_4-4_B](../images/Lab_4-4_B.png)
 

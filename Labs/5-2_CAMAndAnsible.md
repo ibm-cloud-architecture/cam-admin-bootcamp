@@ -1,6 +1,6 @@
 # Import CAM Template
 
-This Lab will walk you through the steps to configure CAM Deployments automatically using ansible. The ansible script disables root account login and creates an admin user,`sysadmin` with password: `passw0rd`. 
+This Lab will walk you through the steps to configure CAM Deployments automatically using Ansible. The Ansible script disables root account login and creates an admin user,`sysadmin` with password: `passw0rd`. 
 
 ## Importing Template
 

@@ -20,7 +20,7 @@ On the 'Welcome' page, scroll down to the 'Useful links' section and click on th
 
 ![img](../images/LAB_3-1_A.png)
 
-Once the template designer has loaded, lick on the **Repositiories** option which will present a screen similar to this ...
+Once the template designer has loaded, click on the **Repositories** option which will present a screen similar to this ...
 
 ![img](../images/LAB_3-1_B.png)
 
@@ -84,7 +84,7 @@ Select all the and press **Commit** again.
 
 Close the popup window.
 
-Click on the **Repositories** button in the right hand panel where you should see and outgoing activity. Click on the **Push** button and enter your GitHub credentials. On completion, you should be able to see the changes in your github repo.
+Click on the **Repositories** button in the right hand panel where you should see and outgoing activity. Click on the **Push** button and enter your GitHub credentials. On completion, you should be able to see the changes in your Github repo.
 
 Finally to push this to CAM, click on the **Blueprints** button on the left hand side to bring up the design screen again and click on **Publish**. This presents a popup. Click on **Save**.
 

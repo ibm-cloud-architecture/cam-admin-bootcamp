@@ -57,7 +57,7 @@ Before deploying the Content Runtime server, you will need a to create a public/
    - Cloud Provider
      
      - vSphere Datacenter: **Datacenter**
-     - vSphere Disk Datastore: **D_S01_L01_500G** or **D-S02_L01_500G**
+     - vSphere Disk Datastore: **D_S01_L01_500G** or **D_S02_L01_500G**
      - vSphere Default Resource Pool: **CAMPool**
      - vSphere Network Adapter Type: **vmxnet3**
      - Domain Name: **cam.local**
@@ -99,13 +99,13 @@ Before deploying the Content Runtime server, you will need a to create a public/
      - User Public Key: **not needed**
      
      - Content Runtime Host Name: **team#-Ibm-content-runtime**
-   - Software Repository Rettings
+   - Software Repository Settings
      - Software repo User Name/password:  **repouser / passw0rd**
      - Repo Port #:  **8888**
      - Repo secure Port #: **9999**
      - Software Repo Chef Client version: **14.0.190**
    - Additional Settings
-     - Network visability: **public**
+     - Network visibility: **public**
      - Prereq checker strictness: **Lenient**
 
 9. Click **Deploy**.   my take 10 - 15 min to create
@@ -114,123 +114,121 @@ Before deploying the Content Runtime server, you will need a to create a public/
 
 ### Set up product repository
 
-In thsi section you are goiung to createa siftware repoisitory that the IBM Installiation Manager can use to install the WebSphere Application Server into your Middleware Virtual Machine
-
-
+In this section you are going to create software repository that the IBM Installation Manager can use to install the WebSphere Application Server into your Middleware Virtual Machine
 
 1. Copy files from NFS server to CR server
 
-   - From boot node terminal, Log ingo NFS server enter `ssh 10.10.1.6` / passw0rd
+   - From boot node terminal, Log into the NFS server enter `ssh 10.10.1.6` / passw0rd
 
    - go to root directory
 
-   - run  `scp -r ./export/WASND_binaries 10.0.0.###:~/binaries`
+   - run  `scp -r /export/WASND_binaries 10.0.0.###:~/binaries`
 
-     The IP address of your teams Content Runtime Serverwill be  (10.0.0.???)
+     ​	The IP address of your teams Content Runtime Server will be  (10.0.0.??)
 
-2. Set up Instaliation Manager software repository
+   - You should now have a list of product archives in the Content Runtime server under `~/binaries/WASND_binaries`
 
-   - copy Installiation manager to repository
+     ![LAB_4-1R_A](../images/LAB_4-1R_A.png)
 
-     - go to the IM directory `cd /opt/ibm/docker/software-repo/var/swRepo/private/im/v1x/base`
+2. Set up Installation Manager repository 
 
-     - Copy archive
+   ​	*The Directory structure is a way to organize the the product binaries for the Installation Manager and 		the operations/ICP managers to manage product installation archives.*
 
-       `cp ~/binaries/WASND_binaries/(Installiation Manager Archive)`
+   
 
-       Installiation Manager Archive - **agent.installer.linux.gtk.x86_64_1.8.8000.20171130_1105.zip**
+   - Go to the Installation Manager directory
 
-3. Setup the WebSphere Software Repository
+      `cd /opt/ibm/docker/software-repo/var/swRepo/private/im/v1x/base`
 
-   - log into Content Runtime Server from boot node terminal,  
+   - Copy Installation Manager Archive
 
-      `ssh 10.0.0.###` / passw0rd
+     `cp ~/binaries/WASND_binaries/(Installation Manager Archive)`
 
-   - Install **unzip** into the Content Runtime Server,  run  `yum install unzip`
+     Installation Manager Archive - **agent.installer.linux.gtk.x86_64_1.8.8000.20171130_1105.zip**
 
-   - Change to the following directory **/opt/ibm/docker/software-repo/var/swRepo/private/IMRepo**
+3. Set up the WebSphere Application Server repository
 
-   - Create the following directories off **…/IMRepo** 
+   - go to the  `/opt/ibm/docker/software-repo/var/swRepo/private` directory
 
-     ​	-IMRepo/**WAS9**
+   - You will see the following directories here
 
-     ​	-IMRepo/**WAS9fp4**
+     ![LAB_4-1R_B](../images/LAB_4-1R_B.png)
 
-     ​	-IMRepo/**jdk8**
+   -  Go to the `IMRepo` directory
 
-   - Run the following commands to unzip the WebSphere archives into thier repository locations
+   - In the IMRepo directory you will create the WebSphere repository directory structure
 
-     -  for WAS BAse V9.0.0
+   - Create the following directories off of `IMRepo`
 
-       1) `cd /opt/ibm/docker/software-repo/var/swRepo/private/IMRepo/WAS9`
-
-       2) `unzip ~/binaries/WASND_binaries/WAS_ND_V9.0_MP_ML.zip`
-
-     - For WAS V9.0.0.4 Fix pack
-
-       1) `cd /opt/ibm/docker/software-repo/var/swRepo/private/IMRepo/WAS9fp4`
-
-       2) `unzip ~/binaries/WASND_binaries/9.0.0-WS-WAS-FP004.zip`
-
-     - For JDK 8.0.5.35
-
-       1) `cd /opt/ibm/docker/software-repo/var/swRepo/private/IMRepo/jdk8`
-
-       2) `unzip ~/binaries/WASND_binaries/ibm-java-sdk-8.0-5.35-linux-x64-installmgr.zip`
+     - WAS9
+     - WAS9fp4
+     - jdk8
 
      
 
-   - Edit Composite **repository.config** file.  For this section you will need to use the VI Command line editor
+   -  Copy the WAS archives to the directories
 
-     - `cd /opt/ibm/docker/software-repo/var/swRepo/private/IMRepo`
+   - From the `IMRepo` directory run the following commands
 
-     - in this directory you will see the repository.config file
+     - `cp ~/binaries/WASND_binaries/WAS_ND_V9.0_MP_ML.zip WAS9/.`
+     - `cp ~/binaries/WASND_binaries/9.0.0-WS-WAS-FP004.zip WAS9fp4/.`
+     - `cp ~/binaries/WASND_binaries/ibm-java-sdk-8.0-5.35-linux-x64-installmgr.zip jdk8/.`
 
-     - If you run `cat repository.config`, it will like this.
+   - The competed WebSphere repository structure should look like this
 
-       ![LAB_4-1_A](../images/LAB_4-1_A.png)
+     ![LAB_4-1R_C](../images/LAB_4-1R_C.png)
+
+4. Composite **repository.config** file.  For this section you will need to use the VI Command line editor
+
+   - Go to the IMRepo directory `cd /opt/ibm/docker/software-repo/var/swRepo/private/IMRepo`
+
+   - In this directory you will see the repository.config file
+
+   - If you run `cat repository.config`, it will like this.
+
+     ![LAB_4-1R_D](../images/LAB_4-1R_D.png)
 
    - Edit the repository file
 
-     - Uncomment the **WAS9** and the **jdk8** lines
+     - Uncomment the **WAS9** and the **jdk8** lines and add the archive's
 
-     - Add the following line  for the WAS V9.0.0.4 Fix pack
+     - Add the following line  for the WAS V9.0.0.4 Fix pack 
 
-       ` repository.url.was9fp4=./WAS9fp4`
+       `repository.url.was9fp4=./WAS9fp4/9.0.0-WS-WAS-FP004.zip`
 
-   -   Your completed **repository.config** file should look like this:
+     - Your completed **repository.config** file should look like this:
 
-     ![LAB_4-1_B](../images/LAB_4-1_B.png)
+![LAB_4-1R_E](../images/LAB_4-1R_E.png)
+
+
+
+5. Validate Installation Manager repository
+
+   - Install **unzip** into the Content Runtime Server,  run  `yum install unzip`
+
+   - Create the IMTemp  directory
+
+     `/opt/ibm/docker/software-repo/var/swRepo/private/IMTemp`
+
+   - From the `IMTemp` dir run 
+
+     ```
+     unzip ~/binaries/WASND_binaries/agent.installer.linux.gtk.x86_64_1.8.8000.20171130_1105.zip -d imtoolkit
+     ```
+
+     - Use the IMCL (Installation Manager Command Line) To validate the repository
+     - Go to the `/opt/ibm/docker/software-repo/var/swRepo/private/IMTemp/imtoolkit/tools` directory
+     - Run the following command 
+
+   - ```
+     ./imcl listAvailablePackages -repositories /opt/ibm/docker/software-repo/var/swRepo/private/IMRepo/
+     ```
 
      
 
-4. Validate Installiation Manager repository
+   - You should see the following output
 
-   - Create the IMTemp  directory in /opt/ibm/docker/software-repo/var/swRepo/private/**IMTemp**
-
-   - From IMTemp dir run 
-
-     `unzip ~/binaries/WASND_binaries/(Instaliation Manager Archive)  -d imtoolkit`
-
-     Installiation Manager Archive - **agent.installer.linux.gtk.x86_64_1.8.8000.20171130_1105.zip**
-
-   - Use the IMCL (Installiation Manager Comand Line) To validate the repository
-
-     - Go to the **/opt/ibm/docker/software-repo/var/swRepo/private/IMTemp/imtoolkit/tools** directory
-
-     - Run the following command 
-
-       ```
-       ./imcl listAvailablePackages -repositories /opt/ibm/docker/software-repo/var/swRepo/private/IMRepo/
-       ```
-
-       
-
-     - You should see the following output
-
-![LAB_4-1_C](../images/LAB_4-1_C.png)
-
-
+![LAB_4-1R_F](../images/LAB_4-1R_F.png)
 
 
 

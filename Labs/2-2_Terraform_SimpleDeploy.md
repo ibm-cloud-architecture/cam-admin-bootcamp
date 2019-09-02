@@ -6,8 +6,6 @@ In this section we will identify the location of the Terraform Simple Deployment
 
 Execute this section from the **Boot** node.
 
-<!--login directory may change. Update the path once we know where it will reside. Need to know if this has to be pulled down as part of this lab -->
-
 1. Launch the terminal emulator that can be found on the desktop
 
 2. Create a new folder for the terraform files and clone the Lab repository. Then remove the .git folder to stop any changes being made to the original by mistake (effectively disconnecting your clone from Git)

@@ -21,7 +21,7 @@ This Lab will walk you through the steps to create a CAM Template from the worki
    ![img](../images/LAB_2-4_A.png)
 
 5. A summary screen is displayed. Make sure that the information relates to the project you created in the last Lab and hit **Save**
-   
+  
 6. If you go back to Menu -> Library -> Templates, you should now see your imported template in **My Templates**
 
    ![img](../images/cam_mytemplates.png)
@@ -47,7 +47,7 @@ In the Cloud Automation Manager user interface, the template **Overview** page i
 
 The `camvariables.json` file contains metadata that is used in Cloud Automation Manager to augment the support for variables in terraform. Metadata adds additional parameters for existing variables that are understood and handled by Cloud Automation Manager.
 
-When you deploy the template in the Cloud Automation Manager user interface, all these defined variables are displayed. After you enter the values in the user interface, they are passed on to a JSON file which is in turn sent for execution to terraform. Terrform matches these parameters with the variables in the `.tf` file, and therefore the name and type need to be consistent across both files.
+When you deploy the template in the Cloud Automation Manager user interface, all these defined variables are displayed. After you enter the values in the user interface, they are passed on to a JSON file which is in turn sent for execution to terraform. Terraform matches these parameters with the variables in the `.tf` file, and therefore the name and type need to be consistent across both files.
 
 This file is used to determine name-value pairs that the Terraform Plan will use when it is executed. It also configures how the parameters will be presented to the user. Attributes such as whether it will be read-only, completely hidden, or displayed but the value will be restricted (e.g. for passwords).
 

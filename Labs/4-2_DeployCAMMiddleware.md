@@ -5,7 +5,7 @@
    - Select **Middleware**
    - In search bar, enter **WebSphere**
 
-   - Scroll throuh templates until you find the following template
+   - Scroll through templates until you find the following template
 
      **IBM WebSphere ND V9 on single Virtual Machine**  for **VMware vSphere** provider
 
@@ -38,13 +38,13 @@
      - Domain Name - WASNode01: **cam.local**
      - Operating System ID / Template - WASnode01: **rhels76-template**
      - operating System username - WASNode01: **root**
-     - operationg System password - WASNode01:  **passw0rd**
+     - operating System password - WASNode01:  **passw0rd**
      - Root Disk Size - WASNode01: default - **100**
      - Short hostname - WASNode01: **team#washost**
      - Template Disk Datastore - WASNode01:  **D_S01_L01_500G** or **D_S02_L01_500G**
-     - Virtua Machine Gateway Address - WASNode01:  **10.0.0.254**
+     - Virtual Machine Gateway Address - WASNode01:  **10.0.0.254**
      - Virtual Machine IP address - WASNode01: 1**0.0.0.{within team IP range}**
-     - Virtuial Machine Memory - WASNode01:  default - **4096**
+     - Virtual Machine Memory - WASNode01:  default - **4096**
      - Virtual Machine Netmask prefix - WASNode01:  **24**
      - Virtual Machine vCPU's - WASNode01:  default - **2**
      - Virtual Machine vSphere Port Group - WASNode01: **VM Network**
@@ -53,15 +53,15 @@
 
    - WASNode01
 
-     - WebSPhere Application Server version : **9.0.0.4**
-     - WebSPhere Application Server cell name:  **cell01**
-     - WebSPhere Application Server max JVM Heap Size: **512**
-     - WebSPhere Application Server profile name:  **AppSrv01**
+     - WebSphere Application Server version : **9.0.0.4**
+     - WebSphere Application Server cell name:  **cell01**
+     - WebSphere Application Server max JVM Heap Size: **512**
+     - WebSphere Application Server profile name:  **AppSrv01**
      - WebSphere Java SDK version:  **8.0.5.35**
      - WebSphere administrative user name:  **wasadmin**
      - WebSphere administrative password:  **passw0rd**
-     - WebSphere default keyatore password:  **passw0rd**
-     - WebSphere Installiation userid:  **wasadmin**
+     - WebSphere default keystore password:  **passw0rd**
+     - WebSphere Installation userid:  **wasadmin**
      - WebSp[here profile location:  **/opt/IBM/WebSphere/AppServer/profile**
      - WebSphere user group[ name: **wasgrp**
 
@@ -69,7 +69,7 @@
 
 ### 2. Check WAS VM
 
-If the Template has deployed sucessfully, you should have a Virtual Machine with WebSphere Application Server  base edition installed, up and running. 
+If the Template has deployed successfully, you should have a Virtual Machine with WebSphere Application Server  base edition installed, up and running. 
 
 ##### Check the status of the WAS App Server
 
@@ -135,11 +135,11 @@ If the Template has deployed sucessfully, you should have a Virtual Machine with
 
    - in a browser go to **10.0.0.(*team# WAS IP address*):9043/ibm/console**
 
-3. in Adminconsole go to **Application > New Appication**
+3. In the admin console go to **Application > New Application**
 
    - Select **New Enterprise Application**
 
-   - Select **Remote File System** (you are running the admin console remotly from your WAS VM )
+   - Select **Remote File System** (you are running the admin console remotely from your WAS VM )
 
      - Browse, select **team#washosteNode01**
 
@@ -204,7 +204,7 @@ If the Template has deployed sucessfully, you should have a Virtual Machine with
 
      ![Lab_4-2_H](../images/Lab_4-2_H.png)
 
-#### Lab Completeion Clean Up
+#### Lab Completion Clean Up
 
 To remove the instances used during this lab and the previous one, first remove the WAS VM via CAM Menu -> Deployed Instances -> Templates.
 

@@ -33,7 +33,7 @@ Execute all the following from the **Boot** node.
 7. Click the **Add** button
 
 ![img](../images/gitlab_add_ssh_key.png)
- 
+
 ### Add a Personal Access Token
 While still in the GitLab UI, you need to add a personal access token that will be used in a later lab.
 
@@ -72,7 +72,7 @@ While still in the GitLab UI, you need to add a personal access token that will 
    cd ~/Documents/cam-admin-bootcamp
    ```
 
-2. Now you are going to reassociate the local repo (cloned from the previous lab) to your new GitLabs project. Do this by executing these instructions ...
+2. Now you are going to re-associate the local repo (cloned from the previous lab) to your new GitLabs project. Do this by executing these instructions ...
 
    ```
    git config --global user.email "labadmin@ibm.com"
@@ -86,14 +86,14 @@ While still in the GitLab UI, you need to add a personal access token that will 
    git push -u origin master
    ```
 
-   Go back to the GitLab web UI and click on Projects -> Your projects. You should now see the project you created previously, but this time, when you click on the project name, it should have a folder called Terraform/Lab2. Click on the foler name and you will see the terraform files are now loaded into your project.
+   Go back to the GitLab web UI and click on Projects -> Your projects. You should now see the project you created previously, but this time, when you click on the project name, it should have a folder called Terraform/Lab2. Click on the folder name and you will see the terraform files are now loaded into your project.
    
 ### Modifying your project
 
    There are two ways that you could update the content of your project. One is to use the GitLab browser, identify one of the files in your project and **Edit**.
 
    The second and the 'better' approach, is to edit the files that you pulled from the repository and are now residing on the Boot node.
-   
+
    The following describes the steps to change the number of nodes and amount of CPU the plan requires.
 
 1. From the terminal emulator previously opened, run the following commands

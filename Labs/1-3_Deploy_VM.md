@@ -40,8 +40,8 @@ In this lab you will create a Template and deploy a Virtual Machine from that te
 ​	        Ex. ***Team#*_VMware**
 
 - Cloud Input Variables
-  - vSphere Cluster - Target vSphere cluister to host virtual machine: **DatacenterCluster**
-  - vSphere Datacenter - Target vSphere Datacentver fro virtual machine creation: **Datacenter**
+  - vSphere Cluster - Target vSphere cluster to host virtual machine: **DatacenterCluster**
+  - vSphere Datacenter - Target vSphere Datacenter fro virtual machine creation: **Datacenter**
   - vSphere Folder Name - Target vSphere folder for virtual machine:  **Target/*Team#***
 
 - Virtual Machine Input Variables
@@ -50,17 +50,17 @@ In this lab you will create a Template and deploy a Virtual Machine from that te
   
     **Note:** Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-).
 
-  - DNS Servers - DNS serers for virtual, network adapter
+  - DNS Servers - DNS servers for virtual, network adapter
 
   ​		   Click **Add New**:  **8.8.8.8**
 
-  - DNS Suffixs - Name resolution suffexs for the virtuial network adapter
+  - DNS Suffixes - Name resolution suffixes for the virtual network adapter
 
     ​	Click **Add New** :   **cam.local**
 
   - Domain Name - Domain Name of virtual machine:  **cam.local**
 
-  - Operating System ID / Template - Operatimng System id / template that should be used when creating the virtuall image:  **rhels76-template**
+  - Operating System ID / Template - Operating System id / template that should be used when creating the virtual image:  **rhels76-template**
 
   - Root Disk Size - size of template disk volume:  **25**(default)
 
@@ -96,7 +96,7 @@ In this lab you will create a Template and deploy a Virtual Machine from that te
 
     ​		Select **vmxnet3**
 
-  - vSphere Resourse Pool - Target vSphere Resource Pool to host the virtual machine:  **CAMPool**
+  - vSphere Resources Pool - Target vSphere Resource Pool to host the virtual machine:  **CAMPool**
 
 9. Click **Deploy**
 
@@ -106,7 +106,7 @@ In this lab you will create a Template and deploy a Virtual Machine from that te
 
 11. Upon a successful deployment you will see the following:
 
-Notice the APPLY Complete at the bottom of the logfile and the Green Dot with "running" next to it,  this indicates that your VM was sucessfully deployed.
+Notice the APPLY Complete at the bottom of the log file and the Green Dot with "running" next to it,  this indicates that your VM was successfully deployed.
 
 ![Lab_1-3_F](../images/Lab_1-3_F.png)
 
