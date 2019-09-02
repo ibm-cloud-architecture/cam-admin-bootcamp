@@ -1,0 +1,278 @@
+{
+  "input_datatypes": [
+  ],
+  "input_groups": [
+    {
+      "name": "Globals",
+      "label": "Globals"
+    },
+    {
+      "name": "Instances",
+      "label": "Instances"
+    }
+  ],
+  "output_groups": [ ],
+  "template_input_params": [
+    {
+      "name": "vsphere_server",
+      "label": "vSphere Server",
+      "description": "IP address of the vSphere server",
+      "type": "string",
+      "default": "10.0.0.210",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Globals"
+    },
+    {
+      "name": "allow_unverified_ssl",
+      "label": "Allow unverified SSL",
+      "description": "Allows terraform vsphere provider to communicate with vsphere servers with self signed certificates",
+      "type": "string",
+      "default": "true",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Globals"
+    },
+    {
+      "name": "vsphere_datacenter",
+      "label": "vSphere Datacenter",
+      "description": "Name of the vSphere Datacenter to deploy to",
+      "type": "string",
+      "default": "Datacenter",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Globals"
+    },
+    {
+      "name": "vsphere_cluster",
+      "label": "vSphere Cluster",
+      "description": "Name of vsphere cluster to deploy to",
+      "type": "string",
+      "default": "DatacenterCluster",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Globals"
+    },
+    {
+      "name": "vsphere_resource_pool",
+      "label": "vSphere Resource Pool",
+      "description": "Path of resource pool to deploy to",
+      "type": "string",
+      "default": "CAMPool",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Globals"
+    },
+    {
+      "name": "datastore_cluster",
+      "label": "Datastore Cluster",
+      "description": "Name of datastore cluster to use for the VMs",
+      "type": "string",
+      "default": "DatastoreCluster",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Globals"
+    },
+    {
+      "name": "folder",
+      "label": "Folder",
+      "description": "Name of VM Folder to provision the new VMs in. The folder will be created if it doesn't exist",
+      "type": "string",
+      "default": "Target/Team",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Globals"
+    },
+    {
+      "name": "team_number",
+      "label": "Team Number",
+      "description": "Please enter your Team Number",
+      "type": "string",
+      "required": true,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "secured": false,
+      "group_name": "Globals"
+    },
+    {
+      "name": "network_label",
+      "label": "Network Label",
+      "description": "Name or label of network to provision VMs on. All VMs will be provisioned on the same network",
+      "type": "string",
+      "default": "VM Network",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Instances"
+    },
+    {
+      "name": "template",
+      "label": "Image Template",
+      "description": "Name of template or VM to clone for the VM creations",
+      "type": "string",
+      "default": "rhels76-template",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Instances"
+    },
+    {
+      "name": "instance_name",
+      "label": "Instance Name",
+      "description": "The prefix that will be assigned to the VM's name",
+      "type": "string",
+      "default": "camlab2vm",
+      "required": true,
+      "hidden": false,
+      "immutable": false,
+      "secured": false,
+      "group_name": "Instances"
+    },
+    {
+      "name": "domain",
+      "label": "Domain Name",
+      "description": "Specify domain name to be used for linux customization on the VMs",
+      "type": "string",
+      "default": "camlab.local",
+      "required": true,
+      "hidden": false,
+      "immutable": false,
+      "secured": false,
+      "group_name": "Instances"
+    },
+    {
+      "name": "staticipblock",
+      "label": "Static IP Block",
+      "description": "Specify start unused static ip cidr block to assign IP addresses to the cluster, e.g. 172.16.0.0/16",
+      "type": "string",
+      "default": "10.0.0.0/24",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Instances"
+    },
+    {
+      "name": "staticipblock_offset",
+      "label": "Static IP Block Offset",
+      "description": "Specify the starting offset of the staticipblock to begin assigning IP addresses from.  e.g. with staticipblock 172.16.0.0/16, offset of 10 will cause IP address assignment to begin at 172.16.0.11",
+      "type": "string",
+      "default": "100",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Instances"
+    },
+    {
+      "name": "gateway",
+      "label": "Gateway",
+      "description": "Default gateway for the newly provisioned VMs. Leave blank to use DHCP",
+      "type": "string",
+      "default": "10.0.0.254",
+      "required": true,
+      "hidden": false,
+      "immutable": false,
+      "secured": false,
+      "group_name": "Instances"
+    },
+    {
+      "name": "netmask",
+      "label": "Netmask",
+      "description": "Netmask in CIDR notation when using static IPs. For example 16 or 24. Set to 0 to retrieve from DHCP",
+      "type": "string",
+      "default": "0",
+      "required": true,
+      "hidden": false,
+      "immutable": false,
+      "secured": false,
+      "group_name": "Instances"
+    },
+    {
+      "name": "dns_servers",
+      "label": "DNS Servers",
+      "description": "DNS Servers to configure on VMs",
+      "type": "list",
+      "default": ["10.0.0.254", "10.0.0.253"],
+      "required": true,
+      "hidden": false,
+      "immutable": false,
+      "secured": false,
+      "group_name": "Instances"
+    },
+    {
+      "name": "camlab",
+      "label": "Camlab",
+      "description": "Virtual Machine Resources",
+      "type": "map",
+      "default": {
+        "nodes": "1",
+        "vcpu": "2",
+        "memory": "4096",
+        "disk_size": "50",
+        "thin_provisioned": "true",
+        "eagerly_scrub": "false",
+        "keep_disk_on_remove": "false"
+      },
+      "required": true,
+      "hidden": false,
+      "immutable": false,
+      "secured": false,
+      "group_name": "Instances"
+    },
+    {
+      "name": "ssh_user",
+      "label": "SSH User",
+      "description": "Username which terraform will use to connect to newly created VMs during provisioning",
+      "type": "string",
+      "default": "root",
+      "required": true,
+      "hidden": false,
+      "immutable": true,
+      "secured": false,
+      "group_name": "Instances"
+    },
+    {
+      "name": "ssh_password",
+      "label": "SSH Password",
+      "description": "Password which terraform will use to connect to newly created VMs during provisioning",
+      "type": "string",
+      "required": true,
+      "hidden": false,
+      "immutable": false,
+      "secured": true,
+      "group_name": "Instances"
+    },
+    {
+      "name": "ssh_keyfile",
+      "label": "SSH Keyfile",
+      "description": "Location of private ssh key to connect to newly created VMs during provisioning",
+      "type": "string",
+      "default": "/dev/null",
+      "required": true,
+      "hidden": true,
+      "immutable": false,
+      "secured": false,
+      "group_name": "Instances"
+    }
+  ],
+  "template_output_params": [
+  ]
+}

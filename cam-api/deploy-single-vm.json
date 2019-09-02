@@ -1,0 +1,341 @@
+{
+    "name": "IBMCloudTestJPACOCK",
+    "cloud_connection_ids": [
+        "{{vsphere_connection}}"
+    ],
+    "templateId": "{{templateId}}",
+    "forceCreate": "true",
+    "parameters": [
+        {
+            "name": "allow_unverified_ssl",
+            "type": "string",
+            "description": "Communication with vsphere server with self signed certificate",
+            "default": true,
+            "hidden": true,
+            "label": "Communication with vsphere server with self signed certificate",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "cloud"
+        },
+        {
+            "name": "vm_1_name",
+            "type": "string",
+            "description": "Hostname of virtual machine",
+            "default": "vm-1",
+            "hidden": false,
+            "label": "Vm 1 Hostname - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine",
+            "value": "vm-1"
+        },
+        {
+            "name": "vm_1_dns_servers",
+            "type": "list",
+            "description": "DNS servers for the virtual network adapter",
+            "hidden": false,
+            "label": "DNS Servers - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine",
+            "value": ["8.8.8.8"]
+        },
+        {
+            "name": "vm_1_dns_suffixes",
+            "type": "list",
+            "description": "Name resolution suffixes for the virtual network adapter",
+            "hidden": false,
+            "label": "DNS Suffixes - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine",
+            "value": ["cam.local"]
+        },
+        {
+            "name": "vm_1_root_disk_keep_on_remove",
+            "type": "string",
+            "description": "Delete template disk volume when the virtual machine is deleted",
+            "default": "false",
+            "hidden": true,
+            "label": "Delete template disk volume when the virtual machine is deleted - vm_1",
+            "secured": false,
+            "options": [
+                {
+                    "value": "false",
+                    "label": "False",
+                    "default": "true"
+                },
+                {
+                    "value": "true",
+                    "label": "True"
+                }
+            ],
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine"
+        },
+        {
+            "name": "vm_1_domain",
+            "type": "string",
+            "description": "Domain Name of virtual machine",
+            "hidden": false,
+            "label": "Domain Name - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine",
+            "value":"cam.local"
+        },
+        {
+            "name": "vm_1-image",
+            "type": "string",
+            "description": "Operating system image id / template that should be used when creating the virtual image",
+            "hidden": false,
+            "label": "Operating System ID / Template - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine",
+            "value":"rhels76-template"
+        },
+        {
+            "name": "vm_1_root_disk_size",
+            "type": "string",
+            "description": "Size of template disk volume. Should be equal to template's disk size",
+            "default": "25",
+            "hidden": false,
+            "label": "Root Disk Size - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine"
+        },
+        {
+            "name": "vm_1_root_disk_controller_type",
+            "type": "string",
+            "description": "Type of template disk controller",
+            "default": "scsi",
+            "hidden": false,
+            "label": "Template Disk Controller - vm_1",
+            "secured": false,
+            "options": [
+                {
+                    "value": "scsi",
+                    "label": "scsi",
+                    "default": "true"
+                },
+                {
+                    "value": "scsi-lsi-parallel",
+                    "label": "scsi-lsi-parallel"
+                },
+                {
+                    "value": "scsi-buslogic",
+                    "label": "scsi-buslogic"
+                },
+                {
+                    "value": "scsi-paravirtual",
+                    "label": "scsi-paravirtual"
+                },
+                {
+                    "value": "scsi-isi-sas",
+                    "label": "scsi-isi-sas"
+                },
+                { 
+                    "value": "ide",
+                    "label": "ide"
+                }
+            ],
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine"
+        },
+        {
+            "name": "vm_1_root_disk_datastore",
+            "type": "string",
+            "description": "Data store or storage cluster name for target virtual machine's disks",
+            "hidden": false,
+            "label": "Template Disk Datastore - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine",
+            "value": "D_S01_L01_500G"
+        },
+        
+        {
+            "name": "vm_1_root_disk_type",
+            "type": "string",
+            "description": "Type of template disk volume",
+            "default": "eager_zeroed",
+            "hidden": false,
+            "label": "Template Disk Type - vm_1",
+            "secured": false,
+            "options": [
+                {
+                    "value": "eager_zeroed",
+                    "label": "Thick Provision Eager Zeroed",
+                    "default": "true"
+                },
+                {
+                    "value": "lazy",
+                    "label": "Thick Provision Lazy Zeroed"
+                },
+                {
+                    "value": "thin",
+                    "label": "Thin Provision",
+                    "group_name": "virtualmachine"
+                }
+            ],
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine"
+        },
+        {
+            "name": "vm_1_ipv4_gateway",
+            "type": "string",
+            "description": "IPv4 gateway for vNIC configuration",
+            "hidden": false,
+            "label": "Virtual Machine Gateway Address - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine",
+            "value": "10.0.0.1"
+        },
+        {
+            "name": "vm_1_ipv4_address",
+            "type": "string",
+            "description": "IPv4 address for vNIC configuration",
+            "hidden": false,
+            "label": "Virtual Machine IP Address - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine",
+            "value": ""
+        },
+        {
+            "name": "vm_1_memory",
+            "type": "string",
+            "description": "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024",
+            "default": "1024",
+            "hidden": false,
+            "label": "Virtual Machine Memory - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine"
+        },
+        {
+            "name": "vm_1_ipv4_prefix_length",
+            "type": "string",
+            "description": "IPv4 prefix length for vNIC configuration. The value must be a number between 8 and 32",
+            "hidden": false,
+            "label": "Virtual Machine Netmask Prefix - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine",
+            "value": 24
+        },
+        {
+            "name": "vm_1_number_of_vcpu",
+            "type": "string",
+            "description": "Number of virtual CPU for the virtual machine, which is required to be a positive Integer",
+            "default": "1",
+            "hidden": false,
+            "label": "Virtual Machine vCPUs - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine"
+        },
+        {
+            "name": "vm_1_network_interface_label",
+            "type": "string",
+            "description": "vSphere port group or network label for virtual machine's vNIC",
+            "hidden": false,
+            "label": "Virtual Machine vSphere Port Group - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine",
+            "value": "VM Network"
+        },
+        {
+            "name": "vm_1_cluster",
+            "type": "string",
+            "description": "Target vSphere cluster to host the virtual machine",
+            "hidden": false,
+            "label": "vSphere Cluster - vm_1",
+            "secured": false,
+            "required": false,
+            "immutable": false,
+            "group_name": "cloud",
+            "value": "DatacenterCluster"
+        },
+        {
+            "name": "vm_1_datacenter",
+            "type": "string",
+            "description": "Target vSphere datacenter for virtual machine creation",
+            "hidden": false,
+            "label": "vSphere Datacenter - vm_1",
+            "secured": false,
+            "required": false,
+            "immutable": false,
+            "group_name": "cloud",
+            "value": "Datacenter"
+        },
+        {
+            "name": "vm_1_folder",
+            "type": "string",
+            "description": "Target vSphere folder for virtual machine",
+            "hidden": false,
+            "label": "vSphere Folder Name - vm_1",
+            "secured": false,
+            "required": false,
+            "immutable": false,
+            "group_name": "cloud",
+            "value": "Target/Team2"
+        },
+        {
+            "name": "vm_1_adapter_type",
+            "type": "string",
+            "description": "Network adapter type for vNIC Configuration",
+            "default": "vmxnet3",
+            "hidden": false,
+            "label": "vSphere Network Adapter Type - vm_1",
+            "secured": false,
+            "options": [
+                {
+                    "value": "vmxnet3",
+                    "label": "vmxnet3",
+                    "default": "true"
+                },
+                {
+                    "value": "e1000",
+                    "default": "e1000"
+                }
+            ],
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine"
+        },
+        {
+            "name": "vm_1_resource_pool",
+            "type": "string",
+            "description": "Target vSphere Resource Pool to host the virtual machine",
+            "hidden": false,
+            "label": "vSphere Resource Pool - vm_1",
+            "secured": false,
+            "required": true,
+            "immutable": false,
+            "group_name": "virtualmachine",
+            "value": "CAMPool"
+        }
+    ]
+}

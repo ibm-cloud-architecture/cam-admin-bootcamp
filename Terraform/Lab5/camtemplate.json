@@ -1,0 +1,28 @@
+{
+  "name": "CAMLAB Terraform Project",
+  "description": "This template will deploy a Virtual Machine via vSphere",
+  "type": "userCreated",
+  "manifest": {
+    "template_type": "Terraform",
+    "template_format": "HCL",
+    "template_provider": "VMware vSphere"
+  },
+  "metadata": {
+    "displayName": "CAMLAB Terraform Project",
+    "providerDisplayName": "VMware vSphere",
+    "longDescription": "This template will deploy a Virtual Machine via vSphere",
+    "bullets": [{
+      "title": "CAMLab",
+      "description": " IBM CAMLab Training<br>"},
+    {
+      "title": "Operating Systems Supported",
+      "description": "RedHat 76<br>"},
+    {
+      "title": "Default Virtual Machine Settings",
+      "description": " vCPU 2, Memory (GB) 4, Disk (GB) 50<br>"},
+    {
+      "title": "VM Folder",
+      "description": " The deployed VM(s) will reside in Datacenter -> Target -> TeamX -> Lab2 (Where X is your team number)<br>"}
+  ]
+  }
+}

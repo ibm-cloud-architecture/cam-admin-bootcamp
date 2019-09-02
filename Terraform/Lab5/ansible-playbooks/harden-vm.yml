@@ -1,0 +1,23 @@
+---
+#
+# Hardening script that create admin user with admistrative priveleges and disables root account
+#
+- name: run the playbook tasks on the localhost
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  tasks:
+    - name: Create admin user
+      become: yes 
+      user:
+        name: 'sysadmin'
+        comment: 'Admin User'
+        password: '$6$kmx3VG6IVg2HNaQD$.qMvyYLbNsjRXTgAYnVJIKvRWaDJx6nrmN.1p1uO6kvMLSEW3FNeHa6DH7zeRPxWtgp1seK40kiDCPF5lbK18.'
+        append: yes
+        groups: 'wheel'
+  
+    - name: Change root user's shell
+      lineinfile: 
+        path: /etc/passwd
+        regexp: '^root:'
+        line: root:x:0:0:root:/root:/sbin/nologin
