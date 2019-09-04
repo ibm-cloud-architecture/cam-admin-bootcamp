@@ -71,7 +71,7 @@ resource "vsphere_virtual_machine" "camlab" {
   count            = "${var.camlab["nodes"]}"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
 
-  name      = "${format("${lower(var.instance_name)}-camlab%02d", count.index + 1 + (var.team_number * 100)) }"
+  name      = "${format("${lower(var.instance_name)}-camlab%02d", count.index + 1 + (var.team_number * 10)) }"
   num_cpus  = "${var.camlab["vcpu"]}"
   memory    = "${var.camlab["memory"]}"
 
@@ -110,7 +110,7 @@ resource "vsphere_virtual_machine" "camlab" {
 
     customize {
       linux_options {
-        host_name = "${format("${lower(var.instance_name)}-camlab%02d", count.index + 1 + (var.team_number * 100)) }"
+        host_name = "${format("${lower(var.instance_name)}-camlab%02d", count.index + 1 + (var.team_number * 10)) }"
         domain    = "${var.domain != "" ? var.domain : format("%s.local", var.instance_name)}"
       }
       network_interface {

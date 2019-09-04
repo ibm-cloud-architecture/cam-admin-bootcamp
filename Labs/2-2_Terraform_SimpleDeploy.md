@@ -1,6 +1,8 @@
-# Terraform Simple Deployment Install
+# Terraform Simple Deployment
 
 # Readying your environment
+
+**Note:** The Virtual Machines that we will use in this lab will be autimatically provisioned based on the IP range assigned. You will need to destroy the VMs from the previous exercises or you may have IP address conflicts.
 
 In this section we will identify the location of the Terraform Simple Deployment Lab files and initialize the working directory. 
 

@@ -33,8 +33,19 @@ dns_servers = [ "10.0.0.254" ]
 ssh_user = "root"
 ssh_password = "passw0rd"
 
-##### CAMLAB Cluster Components #####
-camlab = {
+##### CAMAPP Cluster Components #####
+camapp = {
+    nodes = "1"
+    vcpu = "2"
+    memory = "4096"
+    disk_size = "50"
+    thin_provisioned = "true"
+    eagerly_scrub       = ""
+    keep_disk_on_remove = "false"
+}
+
+##### CAMDB Cluster Components #####
+camdb = {
     nodes = "1"
     vcpu = "2"
     memory = "4096"
