@@ -6,9 +6,9 @@ In this section we will create an ssh key that will enable your user to push and
 
 Execute all the following from the **Boot** node.
 
-1. Launch the terminal emulator that can be found on the desktop 
+1. Launch the terminal emulator that can be found on the desktop (Do not use the root account!)
 
-2. Run the following commands to create a new ssh key
+2. Run the following commands to create a new ssh key (where X is your allocated student / team number)
 
    ```
    ssh-keygen -t rsa -b 4096 -C "studentXX@ibm.com"

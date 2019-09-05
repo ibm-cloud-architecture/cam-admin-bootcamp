@@ -2,7 +2,9 @@
 
 # Readying your environment
 
-**Note:** The Virtual Machines that we will use in this lab will be autimatically provisioned based on the IP range assigned. You will need to destroy the VMs from the previous exercises or you may have IP address conflicts.
+**Note:** The Virtual Machines that we will use in this lab will be automatically provisioned based on the IP range assigned. You will need to destroy the VMs from the previous exercises or you may have IP address conflicts.
+
+**Note:** For this lab open a new terminal session. Be careful not to use an existing super user terminal session from a previous lab.
 
 In this section we will identify the location of the Terraform Simple Deployment Lab files and initialize the working directory. 
 
@@ -138,7 +140,7 @@ On completion, look at your virtual machines resources via the vSphere Web Clien
 
 Click on 'Cancel' to close the Edit Settings popup.
 
-### Deleing a virtual machine (node) via vSphere Web Client
+### Deleting a virtual machine (node) via vSphere Web Client
 
 We are now going to remove a virtual machine using the vSphere Web Client. 
 
