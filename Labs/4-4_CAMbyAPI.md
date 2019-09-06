@@ -4,6 +4,18 @@ This lab will walk you through using the CAM Rest API and how you can use Postma
 
 This lab will be ran on the **boot** node - login as sysadmin (passw0rd)
 
+## Install Postman extension in the Chrome web browser
+
+You can install the Postman extension using this link: 
+    https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop
+
+To install Postman, just click the button "Add to Chrome"
+
+When Chrome is opened, you can access to your applications (extensions) entering `chrome://apps` in your Chrome address bar.  
+
+Click the `Postman` icon to open Postman application.  A window warns you that this chrome app is being deprecated. Do not download the native application. Just close the window to ignore this warning message. 
+
+
 ## Generating Token with cURL
 
 To generate an access token, open a terminal and run the following command

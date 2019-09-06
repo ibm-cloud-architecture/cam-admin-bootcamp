@@ -48,8 +48,8 @@ In this lab you will be building off the simple NodeJS service that was created 
    <img src="../images/4-3b_basic_service.png" alt="image-20190905053156535" style="zoom:67%;" />
 
 3. First let's rename our decision. In the configuration panel on the right side of the canvas change the **Title** of the decision. 
-
-   ​	<img src="../images/4-3b_decision_title.png" alt="image-20190905053808491" style="zoom:50%;" />
+   
+   ![An image](../images/4-3b_decision_title.png) <!-- .element height="50%" width="50%" -->
 
 4. Next we will need to add a parameter to base our decision on. In configuration panel select **Add Parameter** at the bottom of the list.
 

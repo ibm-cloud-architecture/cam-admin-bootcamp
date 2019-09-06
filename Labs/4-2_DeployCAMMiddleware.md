@@ -1,15 +1,24 @@
-### 1. Deploy the WAS VM template
+### Deploy the WAS VM template
 
-1. ​	in CAM go to **Library** > **Templates**
+In this lab we are going to use the Content Runtime Server we installed to automate the installation of a Websphere Application Server (WAS).
 
-   - Select **Middleware**
-   - In search bar, enter **WebSphere**
+**Note:** This lab should be executed from the **Boot** node.
 
-   - Scroll through templates until you find the following template
+1. Login to the CAM console
 
-     **IBM WebSphere ND V9 on single Virtual Machine**  for **VMware vSphere** provider
+2. Navigate to the CAM WebSphere template library
 
-2.  Deploy
+   **Menu** > **Library** > **Templates**
+
+3. Select **Middleware**
+
+4. In search bar, enter **WebSphere**
+
+5. Scroll through templates until you find the following template:
+
+   **IBM WebSphere Network Deployment V9 on single virtual machine**  for **VMware vSphere** provider
+
+6. Deploy the template with the following parameters:
 
    - Instance Name - **team#was9vm**
 
@@ -19,8 +28,8 @@
 
    - Select Data Objects - 
 
-     - Bastion host - **default**
-     - HTTP proxy Config - **default**
+     - Bastion host - **<use the default value>**
+     - HTTP proxy Config - **<use the default value>**
      - Advanced Content Runtime Chef -  **team#_CR_Server**
 
    - Cloud Input Variables 
@@ -37,8 +46,8 @@
      - DNS suffixes - WASNode01: **cam.local**
      - Domain Name - WASNode01: **cam.local**
      - Operating System ID / Template - WASnode01: **rhels76-template**
-     - operating System username - WASNode01: **root**
-     - operating System password - WASNode01:  **passw0rd**
+     - Operating System username - WASNode01: **root**
+     - Operating System password - WASNode01:  **passw0rd**
      - Root Disk Size - WASNode01: default - **100**
      - Short hostname - WASNode01: **team#washost**
      - Template Disk Datastore - WASNode01:  **D_S01_L01_500G** or **D_S02_L01_500G**
@@ -54,64 +63,96 @@
    - WASNode01
 
      - WebSphere Application Server version : **9.0.0.4**
-     - WebSphere Application Server cell name:  **cell01**
-     - WebSphere Application Server max JVM Heap Size: **512**
-     - WebSphere Application Server profile name:  **AppSrv01**
-     - WebSphere Java SDK version:  **8.0.5.35**
-     - WebSphere administrative user name:  **wasadmin**
-     - WebSphere administrative password:  **passw0rd**
-     - WebSphere default keystore password:  **passw0rd**
-     - WebSphere Installation userid:  **wasadmin**
-     - WebSp[here profile location:  **/opt/IBM/WebSphere/AppServer/profile**
-     - WebSphere user group[ name: **wasgrp**
-
      
+     - WebSphere Application Server cell name:  **cell01**
+     
+     - WebSphere Application Server max JVM Heap Size: **512**
+     
+     - WebSphere Application Server profile name:  **AppSrv01**
+     
+     - WebSphere Java SDK version:  **8.0.5.35**
+     
+     - WebSphere administrative user name:  **wasadmin**
+
+     - WebSphere administrative password:  **passw0rd**
+     
+     - WebSphere default keystore password:  **passw0rd**
+     
+     - WebSphere Installation userid:  **wasadmin**
+     
+     - WebSp[here profile location:  **/opt/IBM/WebSphere/AppServer/profile**
+     
+     - WebSphere user group[ name: **wasgrp**
+     
+       
+
+   7. Click **Deploy** and monitor your deployment
+
+   
 
 ### 2. Check WAS VM
 
-If the Template has deployed successfully, you should have a Virtual Machine with WebSphere Application Server  base edition installed, up and running. 
+If the Template has deployed successfully, you should have a virtual machine with WebSphere Application Server installed and  up and running. 
 
 ##### Check the status of the WAS App Server
 
 1. SSH into the App Server vm
 
-   ​	`ssh 10.0.0.(WAS App Server vm IP)`
+   ```
+   ssh root@10.0.0.(WAS App Server vm IP)
+   ```
 
-2. Go to the profile  `cd /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1`
+2. Change to the profile directory
 
-3. check startServer log, run  `cat startServer.log`
+   ```
+   cd /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1
+   ```
+
+3. Check startServer log, run
+
+   ```
+   cat startServer.log
+   ```
 
    You should see "**open for e-business**" at the bottom of the log
 
-![Lab_4-2_A](../images/Lab_4-2_A.png)
+   ![Lab_4-2_A](../images/Lab_4-2_A.png)
 
-##### Start WebSphere Admin Console
 
-1. Add the following ports to the firewall
 
-   - Run the following command for each of the following port
+##### Update the firewall rules for the WebSphere Admin Console
 
-     `firewall-cmd --permanent --add-port=<port_here>/tcp`
+1. Run the commands below to open the port for the WAS Admin Console
 
-     - 9060
-     - 9043
-     - 9080
+   ```
+   firewall-cmd --permanent --add-port=9060/tcp
+   firewall-cmd --permanent --add-port=9043/tcp
+   firewall-cmd --permanent --add-port=9080/tcp
+   ```
 
-   - Restart the firewall
+2. Reload the firewall rules
 
-      run `firewall-cmd --reload`
+   ```
+   firewall-cmd --reload
+   ```
 
-   - Check status of firewall
+3. Verify the rules are active
 
-     Run `firewall-cmd --list-all`, you should see the following
+   ```
+   firewall-cmd --list-all
+   ```
 
-     ![Lab_4-2_B](../images/Lab_4-2_B.png)
+   You should see the following output
 
-2.  Open Admin console 
+   ​	![Lab_4-2_B](../images/Lab_4-2_B.png)
 
-   - Go to the a node with a browser and open a browser
+4. Next we will open the WAS Admin Console 
 
-   - Go to **10.0.0.{WAS VM IP}:9060/ibm/console**  
+   - On the Chrome web browser from the Boot Node and navigate to the URL below:
+
+     **https://10.0.0.<WAS VM IP>:9060/ibm/console**
+
+   - Login with the credentials below
 
      User id = wasadmin
 
@@ -119,21 +160,25 @@ If the Template has deployed successfully, you should have a Virtual Machine wit
 
 ### 3. Deploy simple application
 
-1. Copy Application to WAS VM
+1. Copy Sample WAS Application to WAS VM
 
-   - From the boot node terminal, Log into NFS server enter `ssh 10.10.1.6` / passw0rd
+   - From the boot node copy the sample application .war file to the new WAS virtual machine
 
-   - go to /export/WAS_App directory
-
-   - run  `scp WLPDemoApp1.0.war 10.0.0.###:/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installableApps`
-
-     ![Lab_4-2_C](../images/Lab_4-2_C.png)
-
-     The ip address of your teams WebSphere VM will be  (10.0.0.???)
+     ```
+     scp ~/Documents/cam-admin-bootcamp/WAS_App/WLPDemoApp1.0.war root@10.0.0.<WAS VM IP>:/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installableApps
+     ```
 
 2. Open WebSphere admin console
 
-   - in a browser go to **10.0.0.(*team# WAS IP address*):9043/ibm/console**
+   - On the Chrome web browser from the Boot Node and navigate to the URL below:
+
+     **https://10.0.0.<WAS VM IP>:9060/ibm/console**
+
+   - Login with the credentials below
+
+     User id = wasadmin
+
+     Password = passw0rd
 
 3. In the admin console go to **Application > New Application**
 
@@ -171,42 +216,65 @@ If the Template has deployed successfully, you should have a Virtual Machine wit
 
 4. Restart the WebSphere server
 
-   - SSH into WebSphere VM  `ssh 10.0.0.{Team WAS VM IP}`
-   - go to App Server bin directory
+   - SSH into WebSphere virtual machine
 
-   `cd /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin`
+     ```
+     ssh root@10.0.0.<WAS VM IP>
+     ```
 
-   - Stop the server, run `./stopServer.sh server1`
+   - Change directory to the  App Server bin directory
+
+     ```
+     cd /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin
+     ```
+
+   - Stop the server
+
+     ```
+     ./stopServer.sh server1
+     ```
+
+     You should see the following output
 
      ![Lab_4-2_E](../images/Lab_4-2_E.png)
 
-   - Start the server, run `./startServer.sh server1`
+     
 
+   - Start the server
+
+     ```
+     ./startServer.sh server1
+     ```
+     
+     You should see the following output
+     
      ![Lab_4-2_F](../images/Lab_4-2_F.png)
 
-4. Make sure App is started
+   
 
-   - From the boot node, log back in to the admin console 
+5. Make sure App is started
 
-     **10.0.0.(*team# WAS IP address*):9043/ibm/console**
+   - On the Boot Node return to the Chrome broswere where you have the WebSphere Amin Console open
 
-   - open **Applications > Application Types** and select **WebSphere enterprise applications**
+   - Navigate to **Applications > Application Types** and then select **WebSphere enterprise applications**
 
    - You should see a green arrow next to the **WLPDemoApp1_0_war**
 
      ![Lab_4-2_G](../images/Lab_4-2_G.png)
 
-5. Open the Application
+6. Open the Application
 
-   - from a browser Log onto app -> 
+   - From the Chrome browser navigate to the URL below:
 
-     **10.0.0.(team WAS IP):9080/WLPDemoAppV1Team#/DemoApp_Begin.jsp**
+     **10.0.0.<WAS VM IP>:9080/WLPDemoAppV1Team#/DemoApp_Begin.jsp**
 
+     You should see the following out put
+     
      ![Lab_4-2_H](../images/Lab_4-2_H.png)
 
 #### Lab Completion Clean Up
 
-To remove the instances used during this lab and the previous one, first remove the WAS VM via CAM Menu -> Deployed Instances -> Templates.
+To remove the instances used during this lab and the previous one, first remove the WAS VM via CAM **Menu** -> **Deployed Instances** -> **Templates**.
 
-Next remove the content runtime VM using CAM Menu -> Manage -> Content Runtimes. Click on the 3 dots to the right of the instance created and click on 'Destroy Resources' followed by 'Delete Instance' 
+Next remove the content runtime VM using via CAM **Menu** -> **Manage** -> **Content Runtimes**. Click on the 3 dots to the right of the instance created and click on '**Destroy Resources**' followed by '**Delete Instance**' 
 
