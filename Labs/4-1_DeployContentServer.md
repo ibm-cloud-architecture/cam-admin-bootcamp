@@ -42,15 +42,15 @@ Follow the process below to deploy a Content Runtime Server
 
    Select **Menu** >**Manage** > **Content Runtimes**
 
-3. Click **Create Content Runtime**.
+3. Click **Create Content Runtime**
 
-3. Enter the values below for your Content Runtime Servert
+3. Enter the values below for your Content Runtime Server
 
    Name: **Team#_CR_Server** 
 
    Cloud Provider: **VMware vSphere**
 
-   Runtime: **CAM Content Runtime **
+   Runtime: **CAM Content Runtime**
 
 4. Click **Create**
 
@@ -108,7 +108,7 @@ Follow the process below to deploy a Content Runtime Server
      
      - User Public Key: **not needed**
      
-     - Content Runtime Host Name: **team#-Ibm-content-runtime**
+     - Content Runtime Host Name: **team#-ibm-content-runtime**
    - Software Repository Settings
      - Software repo User Name/password:  **repouser / passw0rd**
      - Repo Port #:  **8888**
@@ -147,7 +147,7 @@ In this section you are going to create a software repository that the IBM Insta
    - Now SSH to your Content Runtime Server
 
      ```
-     ssh root@10.10.1.<your CRS IP>
+     ssh root@10.0.0.<your CRS IP>
      ```
      
    - You should now have a list of product archives in the Content Runtime server under `/root/binaries/WASND_binaries`
@@ -247,7 +247,7 @@ In this section you are going to create a software repository that the IBM Insta
      - Your completed **repository.config** file should look like this:
 
 
-![LAB_4-1R_E](../images/LAB_4-1R_E.png)
+       ![LAB_4-1R_E](../images/LAB_4-1R_E.png)
 
 
 
