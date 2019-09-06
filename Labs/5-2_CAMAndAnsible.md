@@ -6,7 +6,7 @@ This Lab will walk you through the steps to configure CAM Deployments automatica
 
 Import a new template following the steps from **2-4_CreateCAMTemplate** using:
 
-   GitLab Repository URL: **<https://gitlab.10.10.1.4.nip.io/camlabs>**
+   GitLab Repository URL: **<https://gitlab.10.10.1.4.nip.io/camlabs>** (this location may vary depending on how you imported the project)
 
    GitLab Repository sub-directory: **Terraform/Lab5**
 

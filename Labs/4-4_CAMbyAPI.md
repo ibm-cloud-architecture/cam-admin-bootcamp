@@ -9,16 +9,18 @@ This lab will be ran on the **boot** node - login as sysadmin (passw0rd)
 You can install the Postman extension using this link: 
     https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop
 
-To install Postman, just click the button "Add to Chrome"
+To install Postman, just click the button "Add to Chrome" and confirm that you want to install it
 
 When Chrome is opened, you can access to your applications (extensions) entering `chrome://apps` in your Chrome address bar.  
 
-Click the `Postman` icon to open Postman application.  A window warns you that this chrome app is being deprecated. Do not download the native application. Just close the window to ignore this warning message. 
+Click the `Postman` icon to open Postman application.  A window warns you that this chrome app is being deprecated. Do not download the native application. Just close the window to ignore this warning message.
+
+Notice that, you don't need to create a postman account for this lab.  Just click on the link "Take me straight to the app."
 
 
 ## Generating Token with cURL
 
-To generate an access token, open a terminal and run the following command
+To generate an access token, open a terminal and run the following command.
 
 ```
 curl -k -X POST https://10.10.1.2:8443/idprovider/v1/auth/identitytoken -d 'grant_type=password&username=admin&password=passw0rd&scope=openid'
@@ -49,9 +51,9 @@ You can import a json formatted file that contains individual requests.
 
 1. Once Postman is open, click **Import** in the upper lefthand corner.
 
-1. Select **choose files** and specify *cam-api.postman_collection.json*.
+1. Select **choose files** and specify *cam-api.postman_collection.json* located in the directory you have cloned from github in a previous lab (https://github.com/ibm-cloud-architecture/cam-admin-bootcamp   => Documents/cam-admin-bootcamp/cam-api folder)
 
-1. On the left sidebar a new collection should now exist called `cam-api`
+1. On the left sidebar a new collection should now exist called `cam-api`.  Click on Postman 'collection' below the filtering box in order to display the collections.  
 
 1. Click on the collection and a list of requests will appear. Explore through each of the requests taking note the request type (GET, POST, DELETE) the url endpoint for the request.
 
@@ -64,11 +66,11 @@ Importing the environment file is the same as importing a collections.
 
 1. With Postman open, click **Import**.
 
-1. Select **choose files** and specify *cam-api.postman_environment.json*.
+1. Select **choose files** and specify *cam-api.postman_environment.json* from the Git repo you have cloned
 
 Environments can be selected in the upper righthand of the UI. 
 
-1. Click on the dropdown list and select CAM.
+1. Click on the dropdown list and select cam-api.
 
 ![Lab_4-4_A](../images/Lab_4-4_A.png)
 
