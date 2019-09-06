@@ -7,18 +7,33 @@
 [CAM Stack Overflow](https://stackoverflow.com/tags/cloud-automation-manager/info)
 
 
+### CAM Articles and Labs
+
+[CAM Primer](https://medium.com/ibm-cloud/ibm-cloud-automation-manager-a-primer-460d912246d2)
+
+[Getting started with content management](https://developer.ibm.com/cloudautomation/tutorials/getting-started-content-management/)
+
+[CAM Shared Parameters Tutorial](https://developer.ibm.com/cloudautomation/tutorials/end-end-scenario-shared-parameters-cloud-automation-manager/)
 
 
+[CAM with Ansible Playbooks](https://developer.ibm.com/cloudautomation/tutorials/ansible-playbooks/)
 
+[CAM API Reference](https://www.ibm.com/support/knowledgecenter/en/SS2L37_2.1.0.3/cam_api_reference.html)
 
-
-### Others
+[CAM Service Composer tutorial](https://developer.ibm.com/cloudautomation/tutorials/helm-chart-deployment-using-cam-service-orchestration-flow/)
 
 [CAM Backup and Restore](https://developer.ibm.com/cloudautomation/2018/05/08/backup-ha-dr/)
 
 [Installing GitLabs on ICP](https://medium.com/@davemulley/gitlab-and-ibm-cloud-private-1a11cbf91d51)
 
+[IBM Cloud Terraform Provider](https://ibm-cloud.github.io/tf-ibm-docs/index.html)
 
+### Terraform links
 
+[Terraform Module Registry](https://registry.terraform.io/)
+
+[Terraform Cloud Backend](https://app.terraform.io/app)
+
+[Configiuration Drift](https://www.hashicorp.com/blog/detecting-and-managing-drift-with-terraform)
 
 
