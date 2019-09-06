@@ -150,7 +150,7 @@ If the Template has deployed successfully, you should have a virtual machine wit
 
    - Open the Chrome web browser from the Boot Node and navigate to the URL below:
      ```
-     https://10.0.0.<WAS VM IP>:9060/ibm/console
+     http://10.0.0.<WAS VM IP>:9060/ibm/console
      ```
 
    - Login with the credentials below
@@ -171,9 +171,9 @@ If the Template has deployed successfully, you should have a virtual machine wit
 
 2. Open WebSphere admin console
 
-   - On the Chrome web browser from the Boot Node and navigate to the URL below:
+   - Open the Chrome web browser from the Boot Node and navigate to the URL below:
      ```
-     https://10.0.0.<WAS VM IP>:9060/ibm/console
+     http://10.0.0.<WAS VM IP>:9060/ibm/console
      ```
 
    - Login with the credentials below
