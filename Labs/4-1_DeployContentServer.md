@@ -14,7 +14,7 @@ Before deploying the Content Runtime server, you will need a to create a public/
    sudo su -
    ```
 
-3. Chage directories to the ~/.ssh directory
+3. Change directory to the ~/.ssh directory
 
    ```
    cd ~/.ssh
@@ -36,7 +36,7 @@ Before deploying the Content Runtime server, you will need a to create a public/
 
 Follow the process below to deploy a Content Runtime Server
 
-**Note:** Some of the empty field will have a set of empty quotation marks. Remove the empty quotation marks in those fields before defining the values below.
+**Note:** Some of the empty fields will have a set of empty quotation marks. Remove the empty quotation marks in those fields before defining the values below.
 
 1. Login to the Cloud Automation Manager console and navigate to the **Advanced Content Runtimes** management page
 
@@ -156,7 +156,7 @@ In this section you are going to create a software repository that the IBM Insta
 
    
 
-2. Next we will set up Installation Manager repository. The directory structure we are going to populate is a way to organize the the product binaries for the Installation Manager to manage product installation archives.
+2. Next we will set up Installation Manager repository. The directory structure we are going to populate is a way to organize the product binaries for the Installation Manager to manage product installation archives.
 
    - Change to the Installation Manager directory
 
@@ -167,7 +167,7 @@ In this section you are going to create a software repository that the IBM Insta
    - Move the  Installation Manager archive 
 
      ```
-   cp /root/binaries/WASND_binaries/agent.installer.linux.gtk.x86_64_1.8.8000.20171130_1105.zip ./
+     cp /root/binaries/WASND_binaries/agent.installer.linux.gtk.x86_64_1.8.8000.20171130_1105.zip ./
      ```
 
 3. Set up the WebSphere Application Server repository
@@ -216,7 +216,7 @@ In this section you are going to create a software repository that the IBM Insta
 
 4. Update the **repository.config** file
 
-   - Change t the IMRepo directory 
+   - Change to the IMRepo directory 
 
      ```
      cd /opt/ibm/docker/software-repo/var/swRepo/private/IMRepo
@@ -231,8 +231,8 @@ In this section you are going to create a software repository that the IBM Insta
      - Uncomment the **WAS9** and the **jdk8** lines and add the name of the archive files to the path
 
        ```
-     repository.url.was=./WAS9/WAS_ND_V9.0_MP_ML.zip
-     repository.url.jdk8=./jdk8/ibm-java-sdk-8.0-5.35-linux-x64-installmgr.zip
+       repository.url.was=./WAS9/WAS_ND_V9.0_MP_ML.zip
+       repository.url.jdk8=./jdk8/ibm-java-sdk-8.0-5.35-linux-x64-installmgr.zip
        ```
 
      
@@ -256,7 +256,7 @@ In this section you are going to create a software repository that the IBM Insta
    - Install **unzip** into the Content Runtime Server`
 
      ```
-    yum install unzip
+     yum install unzip
      ```
 
    - Create the IMTemp  directory
@@ -268,13 +268,13 @@ In this section you are going to create a software repository that the IBM Insta
    - Change to the IMTemp directory
    
      ```
-    cd /opt/ibm/docker/software-repo/var/swRepo/private/IMTemp
+     cd /opt/ibm/docker/software-repo/var/swRepo/private/IMTemp
      ```
    
    - Unzip the IM installer with the command below
 
      ```
-    unzip ~/binaries/WASND_binaries/agent.installer.linux.gtk.x86_64_1.8.8000.20171130_1105.zip -d imtoolkit
+     unzip ~/binaries/WASND_binaries/agent.installer.linux.gtk.x86_64_1.8.8000.20171130_1105.zip -d imtoolkit
      ```
    
    - Use the IMCL (Installation Manager Command Line) o validate the repository
