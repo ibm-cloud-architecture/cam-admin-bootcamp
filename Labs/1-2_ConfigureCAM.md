@@ -15,7 +15,7 @@ In this lab you will go through the process of creating a CAM connection, testin
    ![Lab_1-2_A](../images/Lab_1-2_A.png)
 
    Then select **Manage** > **Cloud Connections**
-
+   
    ![Lab_1-2_B](../images/Lab_1-2_B.png)
 
 4. Click **Create Connection**
@@ -27,7 +27,7 @@ In this lab you will go through the process of creating a CAM connection, testin
 6. In the Create Connection page, set the following:
 
     - Select a Cloud Provide: **VMware vSphere.** 
-    - Select a Name Space: make this globally accessible - **ON**
+    - Select a Name Space: make this globally accessible - **On**
     - Enter a unuique  connection name:
 
          example: **_Team#\_VMware_**
@@ -42,7 +42,7 @@ In this lab you will go through the process of creating a CAM connection, testin
       - vCenter Server:  **10.0.0.210**
 
 7. Click **Create**
-   
+  
 8. You should see a "Success" dialog when complete
 
    ![Lab_1-2_D](../images/Lab_1-2_D.png)

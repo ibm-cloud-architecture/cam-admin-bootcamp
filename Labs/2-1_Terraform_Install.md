@@ -1,7 +1,5 @@
 # Terraform Install
 
-# Readying your environment
-
 In this section we will install the Terraform binary, which will be used in subsequent labs. 
 
 Execute all the following from the **Boot** node.
@@ -10,59 +8,42 @@ Execute all the following from the **Boot** node.
 
    <https://www.terraform.io/> 
    
-2. Click on the **Download x.xx.xx** button, which will bring up a screen similar to this ...
+2. On the web page, click on the **Download x.xx.xx** button, which will bring up a screen similar to this ...
 
-      ![img](../images/terraform_web.png)
+   ![img](../images/terraform_web.png)
 
-3. Locate the **Linux** version and right click on the 64-bit link and choose **Copy link address**
+3. Then click the link "download order versions of terraform" and select the terraform version aligned with CAM. For CAM 3.1.2 it should be terraform_0.11.11 and the binary **terraform_0.11.11_linux_amd64.zip** (right-click and select Save link as...)
 
-4. Launch the terminal emulator that can be found on the desktop and connect as root using
+   Direct link: [Terraform 0.11.11](https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip)
+   
+   Save the binary to the ~/Downloads directory
 
-   ```
-   sudo su -
-   ```
-
-5. Create a new folder to store the downloaded Terraform binary
+4. Open a terminal and change to the Downloads directory
 
    ```
-   mkdir Terraform
+   cd ~/Downloads
    ```
-
-6. Change to the terraform working directory
-
-   ```
-   cd Terraform
-   ```
-
-7. Pull down the Terraform binary
+   
+5. Extract the terraform binary
 
    ```
-   wget <link_copied_in_step_3>
-   ```
-   NOTE: Due to unknown results from terraform updates affecting the labs, it is probably safer to use the following version
-   https://releases.hashicorp.com/terraform/0.12.0/terraform_0.12.0_linux_amd64.zip
-
-8. Extract the newly download zip file using 
-
-   ```
-   unzip <name_of_zip file>
-   E.g. unzip terraform_0.11.13_linux_amd64.zip
+   unzip terraform_0.11.11_linux_amd64.zip
    ```
 
-9. You should now have the original zip file and a binary called **terraform**. This needs to be moved to a folder which is in the users path. Do this by running 
+6. You should now have the original zip file and a binary called **terraform**. This needs to be moved to a folder which is in the users path. Do this by running 
 
    ```
-   mv terraform /usr/local/bin/.
+   sudo mv terraform /usr/local/bin/
    ```
 
-10. Check that terraform is installed correctly by running the following
+7. Check that terraform is installed correctly by running the following
 
     ```
     terraform -version
     ```
 
-11. Remove the downloaded zip file
+8. Remove the downloaded zip file
 
     ```
-    rm <name_of_zip file>
+    rm terraform_0.11.11_linux_amd64.zip
     ```

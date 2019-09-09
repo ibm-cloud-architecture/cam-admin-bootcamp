@@ -1,6 +1,6 @@
 # CAM Enterprise Edition Install
 
-In this lab we will install Cloud Automation Manager 3.1.2. 
+In this lab we will install Cloud Automation Manager 3.1.2 Enterprise Edition.
 
 ## Load the Passport Advantage Archive (PPA)
 
@@ -27,7 +27,7 @@ In this section we will walk through the process of authenticating to the ICP en
    ```
 
    Upon a successful login you will see the following
-
+   
    ![Lab_1-1_A](../images/Lab_1-1_A.png)
 
 4. Login to the ICP docker registry from the command line (admin/passw0rd)
@@ -223,8 +223,8 @@ This section is executed from the **boot** node
 
 2. Using the search bar, search for **CAM** 
 
-3. Select the "Ibm-cam" Helm Chart from the local-charts repo 
-   Ibm-cam V 3.1.1, Cloud Pak version 3.1.1 , App Version 3.1.2.0
+3. Select the "Ibm-cam" Helm Chart from the **local-charts** repo 
+   ibm-cam v3.1.1, Cloud Pak version 3.1.1 , App Version 3.1.2.0
 
    ![Lab_1-1_C](../images/Lab_1-1_C.png)
 

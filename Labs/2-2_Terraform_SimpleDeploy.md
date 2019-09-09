@@ -1,6 +1,6 @@
 # Terraform Simple Deployment
 
-# Readying your environment
+### Readying your environment
 
 **Note:** The Virtual Machines that we will use in this lab will be automatically provisioned based on the IP range assigned. You will need to destroy the VMs from the previous exercises or you may have IP address conflicts.
 
@@ -29,7 +29,7 @@ Execute this section from the **Boot** node.
 
    This will ensure, amongst other things, that the required provider plugins are installed.	
 
-   Note: This is the first command that should be run after writing a new Terraform configuration or cloning an existing one from version control. It is safe to run this command multiple times.
+   **Note:** This is the first command that should be run after writing a new Terraform configuration or cloning an existing one from version control. It is safe to run this command multiple times.
 
    ```
    terraform init
@@ -37,7 +37,7 @@ Execute this section from the **Boot** node.
 
 5. Set the vCenter access credentials
 
-   Note: As a best practice, it is recommended to NOT include credentials, especially passwords inside configuration files and / or scripts.
+   **Note:** As a best practice, it is recommended to NOT include credentials, especially passwords inside configuration files and / or scripts.
 
    ```
    export VSPHERE_USER=Administrator@VSPHERE.LOCAL
@@ -62,7 +62,7 @@ Now, run the validation plan. This will validate that the terraform configuratio
 terraform plan
 ```
 
-Note: This terraform plan will prompt for a 'Student ID'. Please use the number you have been allocated.
+**Note:** This terraform plan will prompt for a 'Student ID'. Please use the number you have been allocated.
 
 Now it is time to execute (apply) the plan. This will produce the same output that was seen during the previous command but will then prompt you to approve the changes. Please enter 'yes'.
 
@@ -82,7 +82,7 @@ What do you expect to happen ?
 
 Run the following command and pay attention to the change summary.
 
-1. ```
+   ```
    terraform apply
    ```
 

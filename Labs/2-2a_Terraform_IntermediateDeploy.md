@@ -1,7 +1,5 @@
 # Terraform Intermediate Deployment
 
-### Readying your environment
-
 **Note:** The Virtual Machines that we will use in this lab will be automatically provisioned based on the IP range assigned. You will need to destroy the VMs from the previous exercises or you may have IP address conflicts.
 
 **Note:** For this lab open a new terminal session. Be careful not to use an existing super user terminal session from a previous lab.
