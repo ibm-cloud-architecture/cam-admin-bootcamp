@@ -7,16 +7,30 @@ In this lab we will simulate the terrafrom import process. The import process is
 This lab will build upon the previous deployment of your terraform code. In order to simulate the onboarding process we are going rename our existing terraform.tfstate files so we have essetially orphaned our instance(s).
 
 1. Navigate to your terraform project folder
+
 2. Rename your .tfstate files
+
+   ```
+   mv terraform.tfstate backup_terraform.tfstate
+   mv terraform.tfstate.backup backup_terraform.tfstate.backup
+   ```
+
+   
 
 ### Import existing virtual machine
 
-1. Run the import command
+1. Run the import command (replace the # with your team number)
 
    **Note:** You may need to run this multiple times for each instance you previously created
 
    ```
    terraform import vsphere_virtual_machine.camlab /Datacenter/vm/Target/Team#/Lab2/camlab2vm-camlab#1
+   ```
+
+   Example for team 9:
+
+   ```
+   terraform import vsphere_virtual_machine.camlab /Datacenter/vm/Target/Team9/Lab2/camlab2vm-camlab91
    ```
 
 2. You should now see the new .tfstate files

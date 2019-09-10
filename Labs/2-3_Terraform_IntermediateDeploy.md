@@ -188,13 +188,26 @@ output "ICP_SSH_Password" {
   value = "${var.ssh_user}/${var.ssh_password}"
 }
 
-output "IP_Addresses" {
-  description = "The following IP addresses were provisioned:"
-  value = "vsphere_virtual_machine.camlab.default_ip_address"
+output "IP_Address" {
+  description = "The following IP address was provisioned:"
+  value = "${vsphere_virtual_machine.camlab[0].default_ip_address}"
 }
 ```
 
 Apply your terraform to verify your output parameters are displayed.
+
+
+
+**Hint:** If you have multiple instances you can print them all with this format
+
+```
+output "IP_Addresses" {
+  description = "The following IP addresses were provisioned:"
+  value = ["${vsphere_virtual_machine.camlab.*.default_ip_address}"]
+}
+```
+
+
 
 ### Conclusion
 In this section we have tried to introduce you to the HCL syntax and how you can easily modify resources. This is a very simple exercise, but is used to illustrate the power of Terraform and how easy it is to deploy infrastructure.
