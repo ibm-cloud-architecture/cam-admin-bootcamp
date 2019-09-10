@@ -13,10 +13,10 @@ This lab will build upon the previous deployment of your terraform code. In orde
 
 1. Run the import command
 
-   Note: You may need to run this multiple times for each instance you previously created
+   **Note:** You may need to run this multiple times for each instance you previously created
 
    ```
-   terraform import vsphere_virtual_machine.camlab /Datacenter/vm/Target/Team$/Lab2/camlab2vm-camlab#1
+   terraform import vsphere_virtual_machine.camlab /Datacenter/vm/Target/Team#/Lab2/camlab2vm-camlab#1
    ```
 
 2. You should now see the new .tfstate files
