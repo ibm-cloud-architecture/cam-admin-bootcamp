@@ -20,7 +20,7 @@ On the 'Welcome' page, scroll down to the 'Useful links' section and click on th
 
 ![img](../images/LAB_3-1_A.png)
 
-Once the template designer has loaded, click on the **Repositories** option which will present a screen similar to this ...
+Once the template designer has loaded, click on the **Repositories** icon on the left which will present a screen similar to this ...
 
 ![img](../images/LAB_3-1_B.png)
 
@@ -33,8 +33,10 @@ Click on the **Clone Repository** button. This will present a popup for you to e
 Next, click on the Submit button.
 
 Your repository will be added to the list. You now need to click on it to make it the current one.
+ 
+Click on the blue print designer icon.
 
-On the next screen click on the actions button (3 dots to the right of the repo name) for your repository and choose to create a new project ...
+As shown on the next screen click on the actions button (3 dots to the right of the repo name) for your repository and choose to create a new project ...
 
 ![img](../images/LAB_3-1_D.png)
 

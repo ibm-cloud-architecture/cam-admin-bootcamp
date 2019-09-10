@@ -83,6 +83,26 @@ While still in the GitLab UI, you need to add a personal access token that will 
       <Remember to swap the 'x' for your team number>
    git add .
    git commit -m "Initial commit"
+   ```
+   Before you push your code to your GitLab project create a .gitignore file in the root of your repository and tell Git not to push terraform state files:
+   ```
+   vi .gitignore
+    
+   
+   #  Local .terraform directories
+   **/.terraform/*
+
+   # .tfstate files
+   *.tfstate
+   *.tfstate.*
+
+   # .tfvars files
+   *.tfvars
+   ```
+   In case a .gitignore file already exists, please just check its content
+  
+   Then you can push to your GitLabs project
+   ```
    git push -u origin master
    ```
 

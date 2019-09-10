@@ -75,7 +75,7 @@ In the previous deployment we provisioned a VM with a single disk. In this scena
        keep_on_remove   = "${var.camlab["keep_disk_on_remove"]}"
        unit_number      = 0
      }
-  
+    
      disk {
        label            = "${format("${lower(var.instance_name)}-data-camlab2%02d.vmdk", count.index + 1 + (var.team_number * 100)) }"
        size             = "${var.camlab["disk_size"]        != "" ? var.camlab["disk_size"]        : data.vsphere_virtual_machine.template.disks.0.size}"
@@ -170,13 +170,31 @@ There are a couple of ways we can do this. The first as we did in the previous l
    
 13. Login to VMware and verify that you have two virtual machines with different names and that the IP address are incremented based your team number.
 
-14. Destroy your virtual machines
+14. ~~Destroy your virtual machines~~
 
-    ```
-    terraform destroy
-    ```
-   
+    ~~terraform destroy~~
+
 **Optional:** Create variables for your new camdb resource so you can modify the compute resources and disk sizes independently of the camlab instances.
+
+### Bonus: Add output variables
+
+Using the *terraform console* find the name of the hostname variable and add it to the output variables.
+
+**Hint:** Use the sample below as an example.
+
+```
+output "ICP_SSH_Password" {
+  description = "The following userid/passwd can be used to connect to the virtual machines."
+  value = "${var.ssh_user}/${var.ssh_password}"
+}
+
+output "IP_Addresses" {
+  description = "The following IP addresses were provisioned:"
+  value = "vsphere_virtual_machine.camlab.default_ip_address"
+}
+```
+
+Apply your terraform to verify your output parameters are displayed.
 
 ### Conclusion
 In this section we have tried to introduce you to the HCL syntax and how you can easily modify resources. This is a very simple exercise, but is used to illustrate the power of Terraform and how easy it is to deploy infrastructure.

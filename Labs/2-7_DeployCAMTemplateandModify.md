@@ -152,6 +152,23 @@ NOTE: All these steps will take place on the boot node
 2. Edit the camvariables.json file with **vi Lab2/camvariables.json** and locate the line which contains "nodes". Change the number from "1" to "2". Also change the default instance name from "camlab2vm" to "newlab2vms". Save the changes with **:wq!**
 
 3. Inform Git of the changes and push them to the repository
+
+   Check that a file .gitignore exists which tells Git not to push terraform state and tfvars files:
+   ```
+   cat .gitignore
+    
+   #  Local .terraform directories
+   **/.terraform/*
+
+   # .tfstate files
+   *.tfstate
+   *.tfstate.*
+
+   # .tfvars files
+   *.tfvars
+   ```
+   
+   then proceed ...
    ```
    git add Lab2/camvariables.json
    git commit -m "Changed vm host name"
@@ -176,4 +193,4 @@ NOTE: All these steps will take place on the boot node
    
 ## Cleaning Up
 
-Follow the **Removing the Instance** instuctions above to remove the newly created instance.
+Follow the **Removing the Instance** instructions above to remove the newly created instance.
