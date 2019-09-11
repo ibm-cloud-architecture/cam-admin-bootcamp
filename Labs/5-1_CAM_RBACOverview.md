@@ -4,57 +4,46 @@ The lab will walk through setting up **Teams** who will be responsible for diffe
 
 # Readying your environment
 
-An LDAP has already been installed on the Boot node and contains the following groups / users ...
+An LDAP has already been installed and configured on as a deployment on IBM Cloud Private. The LDAP  contains the OU structure:
 
-| Group      | Users  |
-| ---------- | ------ |
-| developers | james  |
-|            | sarah  |
-|            | todd   |
-| operations | bob    |
-|            | josie  |
-|            | laura  |
-| support    | carlos |
-|            | jackie |
-|            | tony   |
+**OU=Users**
++ todd
++ james
++ sarah
++ bob
++ laura
++ josie
++ carlos
++ jackie
++ tony
 
-Now we need to create a connection from ICP to the LDAP. 
+**OU=Groups**
++ developers
+    - todd
+    - james
+    - sarah
++ operations
+    - bob
+    - laura
+    - josie
++ support
+    - carlos
+    - jackie
+    - tony
 
-**NOTE: This has already been pre-configured for this class and is therefore not a required step. These instructions are for reference only**
+**Note:** The default password for all users is: **Passw0rd**
 
-1. Login into the ICP UI as **admin** using the web browser on the Boot node
+### Create namespace
 
-2. Click on Menu -> Manage -> Identity & Access -> Authentication
+1. Login to the IBM Cloud Private console and navigate to **Menu** > **Manage** > **Namespaces**
 
-3. Click on **Create Connection**
+2. Click **Create Namespace**
 
-4. Fill out the following parameters
-   ```
-   Connection name:  `openLDAP`
+   Name: **ldap-lab**
 
-   Server type: `Custom`
+   *Accept defaults for the other values*
 
-   Base DN:  `dc=ibm,dc=com`
-
-   Bind DN:  `cn=admin,dc=ibm,dc=com`
-
-   Bind DN Password:  `Passw0rd`
-
-   URL:  `ldap://10.1.171.80:389`
-
-      NOTE: Click on the 'Test connection' button to confirm you have entered the correct information 
-   
-   Group filter:  `(&(cn=%v)(objectclass=groupOfUniqueNames))`
-
-   User filter:  `(&(uid=%v)(objectclass=inetOrgPerson))`
-
-   Group ID map:  `*:cn`
-
-   User ID map:  `*:uid`
-
-   Group member ID map:  `groupOfUniqueNames:uniqueMember`
-   ```
-   Click on the **Create** button
+3. Click **Create**
 
 ## Create the Teams
 
@@ -66,13 +55,13 @@ To create a team follow these instructions ....
 
 1. Login into the ICP UI as **admin** using the web browser on the Boot node
 
-2. Click on Menu -> Manage -> Identity & Access -> Teams
+2. Click on **Menu** -> **Manage** -> **Identity & Acces**s -> **Teams**
 
 3. Click on **Create team**
 
    The following popup screen is presented ..
 
-   ![img](../images/LAB_5-1_A.png)
+    ![img](../images/LAB_5-1_A.png)
 
 4. Create these teams with the following roles ...
 
@@ -94,34 +83,36 @@ To create a team follow these instructions ....
 
 6. Assign these resources to the relevant teams
 
-      | Team   Name             | Resources Type  | Resource Name |
-      | ----------------------- | --------------- | ------------- |
-      | TeamX-developer-lab     | Namespace       | ldap-lab      |
-      |                         | Helm repository | ibm-node-js   |
-      |                         | Helm repository | ibm-nginx-dev |
-      | TeamX-developer-default | Namespace       | default       |
-      |                         | Helm repository | ibm-node-js   |
-      |                         | Helm repository | ibm-nginx-dev |
-      | TeamX-DevOps            | Namespace       | ldap-lab      |
-      |                         | Namespace       | default       |
-      |                         | Helm repository | ibm-node-js   |
-      |                         | Helm repository | ibm-nginx-dev |
-      | TeamX-support-lab       | Namespace       | ldap-lab      |
-      |                         | Helm repository | ibm-node-js   |
-      |                         | Helm repository | ibm-nginx-dev |
-      | TeamX-support-default   | Namespace       | default       |
-      |                         | Helm repository | ibm-node-js   |
-      |                         | Helm repository | ibm-nginx-dev |
+      | Team   Name             | Resources Type  | Resource Name     |
+      | ----------------------- | --------------- | ----------------- |
+      | TeamX-developer-lab     | Namespace       | ldap-lab          |
+      |                         | Helm repository | Ibm-nodejs-sample |
+      |                         | Helm repository | ibm-nginx-dev     |
+      | TeamX-developer-default | Namespace       | default           |
+      |                         | Helm repository | Ibm-nodejs-sample |
+      |                         | Helm repository | ibm-nginx-dev     |
+      | TeamX-DevOps            | Namespace       | ldap-lab          |
+      |                         | Namespace       | default           |
+      |                         | Helm repository | Ibm-nodejs-sample |
+      |                         | Helm repository | ibm-nginx-dev     |
+      | TeamX-support-lab       | Namespace       | ldap-lab          |
+      |                         | Helm repository | Ibm-nodejs-sample |
+      |                         | Helm repository | ibm-nginx-dev     |
+      | TeamX-support-default   | Namespace       | default           |
+      |                         | Helm repository | Ibm-nodejs-sample |
+      |                         | Helm repository | ibm-nginx-dev     |
 
 ## Test Case Scenarios
 
-The following set of actions will demonstrate how different users will have the ability to carry out different tasks based on the team they are assigned to.
+Execute following set of test cases to demonstrate how different users will have the ability to carry out different tasks based on the team they are assigned to.
 
-All these actions will be carried out via the CAM web interface.
+**Note:** All these actions will be carried out via the CAM web interface.
 
 To switch users, logout using the profile icon in the top right on the page and select **Log Out**. This will take you back to the ICP login screen. Afterwards login as the next user and navigate back to the CAM UI using http://10.10.1.2:30000/
 
 ### Test Case 1 - Bob the Operator
+
+Logout from the IBM Cloud Private Console and login with **bob\Passw0rd**
 
 Bob (bob) is part of the **operations** LDAP group, which is assigned to the **TeamX-Operators** team with an **Operator** role.
 
@@ -134,6 +125,8 @@ Bob (bob) is part of the **operations** LDAP group, which is assigned to the **T
 
 ### Test Case 2 - Jackie from Support
 
+Logout from the IBM Cloud Private Console and login with **jackie\Passw0rd**
+
 Jackie (jackie) is part of the **support** LDAP group, which is assigned to the **TeamX-support-lab** team with a **Viewer** role.
 
 | Task                            | Activity                                                     | Result | Reason                                                       |
@@ -144,9 +137,13 @@ Jackie (jackie) is part of the **support** LDAP group, which is assigned to the 
 
 ### Test Case 3 - Sarah the Editor
 
+Logout from the IBM Cloud Private Console and login with **sarah\Passw0rd**
+
+Sarah's group (developers) is assigned to the team called TeamX-developer-lab team with a **Editor** role
+
 | Task                                         | Activity                                                     | Result                                                       | Reason                                                       |
 | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| List   deployed services                     | Use Menu ->   Deployed Instances -> Services                 | Success but with limited scope   i.e. ones deployed against ldap-lab namespace | Because Sarah's group   (developers) is assigned to the team called TeamX-developer-lab, only the   instances deployed using ldap-lab namespace will by visible |
+| List   deployed services                     | Use Menu ->   Deployed Instances -> Services                 | Success but with limited scope   i.e. ones deployed against ldap-lab namespace | Because Sarah's group   (developers) is assigned to the team called TeamX-developer-lab, only the instances deployed using ldap-lab namespace will by visible |
 | Terminate   an instance                      | Try to terminate one of the   instances created as 'bob' in the previous set of tasks | Success                                                      | As Sarah is part of the team   assigned the Editor role, she can fully manage instances |
 | Deploy a   service                           | Deploy  the service which you created in the 4-3_DeployToICP lab. Note that only the ldap-lab namespace is a selectable option | Success                                                      | Having Editor role gives full   management of templates and services (including publishing) |
 | Create a new   cloud connection              | Following the instructions in lab 1-2_ConfigureCAM, try and create a new cloud connection | Failed                                                       | Again, this activity is only   permitted if you are the administrator |
