@@ -169,7 +169,7 @@ Click on Menu -> Library -> Services
 
 10. Similar to the previous labs, you should now see a new virtual machine in vSphere Web Client under Target -> Team X -> Lab3
 
-11. In addition, if you go to the GitLab project from which this Service + Template was created (via **https://gitlab.10.10.1.4.nip.io/<your_user_id>/cam4admins/issues**, you should see a new Issue similar to this 
+11. In addition, if you go to the GitLab project from which this Service + Template was created (via **https://gitlab.10.10.1.4.nip.io/labadmin/<your project name>/issues**, you should see a new Issue similar to this 
 
     ![img](../images/LAB_3-4_I.png)
 
