@@ -33,7 +33,7 @@ Click on the **Clone Repository** button. This will present a popup for you to e
 Next, click on the Submit button.
 
 Your repository will be added to the list. You now need to click on it to make it the current one.
- 
+
 Click on the blue print designer icon.
 
 As shown on the next screen click on the actions button (3 dots to the right of the repo name) for your repository and choose to create a new project ...
@@ -91,4 +91,6 @@ Click on the **Repositories** button in the right hand panel where you should se
 Finally to push this to CAM, click on the **Blueprints** button on the left hand side to bring up the design screen again and click on **Publish**. This presents a popup. Click on **Save**.
 
 You should now be able to see your template created in the CAM UI under Menu -> Library -> Templates.
+
+Finally deploy your Template
 
