@@ -118,9 +118,9 @@ Bob (bob) is part of the **operations** LDAP group, which is assigned to the **T
 
 | Task                                         | Activity                                                     | Result  | Reason                                                       |
 | -------------------------------------------- | ------------------------------------------------------------ | ------- | ------------------------------------------------------------ |
-| Deploy a   service                           | Deploy the service which you created in the 4-3_DeployToICP lab to **default** namespace | Success | Having the Operator role allows the deployment of services and because both namespaces were allocated to his team he could manage both default and ldap-lab. As an Operator, he can only deploy services, he can in no way edit or publish services |
-| Deploy   a service                           | Deploy the service which you created in the 4-3_DeployToICP lab to **ldap-lab** namespace | Success | As above                                                     |
-| Create   a new cloud connection              | Following the instructions in lab 1-2_ConfigureCAM, try and create a new cloud connection | Failed  | The Operator role does not have   the ability to create new cloud connections. Only the Administrator has this   ability |
+| Deploy a   service                           | Deploy the service which you created in the DeployServiceToICP lab to **default** namespace | Success | Having the Operator role allows the deployment of services and because both namespaces were allocated to his team he could manage both default and ldap-lab. As an Operator, he can only deploy services, he can in no way edit or publish services |
+| Deploy   a service                           | Deploy the service which you created in the DeployServiceToICP lab to **ldap-lab** namespace | Success | As above                                                     |
+| Create   a new cloud connection              | Following the instructions in lab ConfigureCAM, try and create a new cloud connection | Failed  | The Operator role does not have   the ability to create new cloud connections. Only the Administrator has this   ability |
 | Moving   the service to a different category | Find the service you created in the earlier lab using Menu -> Library -> Services. <br>Click on the options to the left and select **Move to …** <br>Select a new category to move this service to | Failed  | The Operator role does not have   the permission to move services. Only and Administrator or an Editor can carry out this task |
 
 ### Test Case 2 - Jackie from Support
@@ -131,9 +131,9 @@ Jackie (jackie) is part of the **support** LDAP group, which is assigned to the 
 
 | Task                            | Activity                                                     | Result | Reason                                                       |
 | ------------------------------- | ------------------------------------------------------------ | ------ | ------------------------------------------------------------ |
-| Deploy   a service              | Deploy the   service which you created in the 4-3_DeployToICP lab | Failed | Note that the deployment only   failed at the every end when the Create Instance was pressed. As a Viewer she can only manage previously deployed instances. Also note   that she could only select ldap-lab as a namespace |
+| Deploy   a service              | Deploy the   service which you created in the DeployServiceToICP lab | Failed | Note that the deployment only   failed at the every end when the Create Instance was pressed. As a Viewer she can only manage previously deployed instances. Also note   that she could only select ldap-lab as a namespace |
 | Terminate   an instance         | Try to terminate one of the instances created as 'bob' in the previous set of tasks | Failed | Again as a Viewer, Jackie does not have the ability to change the state of any   instances |
-| Create   a new cloud connection | Following the instructions in lab 1-2_ConfigureCAM, try and create a new cloud connection | Failed | The Viewer role does not have   the ability to create new cloud connections. Only the Administrator has this ability |
+| Create   a new cloud connection | Following the instructions in lab ConfigureCAM, try and create a new cloud connection | Failed | The Viewer role does not have   the ability to create new cloud connections. Only the Administrator has this ability |
 
 ### Test Case 3 - Sarah the Editor
 
@@ -145,8 +145,8 @@ Sarah's group (developers) is assigned to the team called TeamX-developer-lab te
 | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | List   deployed services                     | Use Menu ->   Deployed Instances -> Services                 | Success but with limited scope   i.e. ones deployed against ldap-lab namespace | Because Sarah's group   (developers) is assigned to the team called TeamX-developer-lab, only the instances deployed using ldap-lab namespace will by visible |
 | Terminate   an instance                      | Try to terminate one of the   instances created as 'bob' in the previous set of tasks | Success                                                      | As Sarah is part of the team   assigned the Editor role, she can fully manage instances |
-| Deploy a   service                           | Deploy  the service which you created in the 4-3_DeployToICP lab. Note that only the ldap-lab namespace is a selectable option | Success                                                      | Having Editor role gives full   management of templates and services (including publishing) |
-| Create a new   cloud connection              | Following the instructions in lab 1-2_ConfigureCAM, try and create a new cloud connection | Failed                                                       | Again, this activity is only   permitted if you are the administrator |
+| Deploy a   service                           | Deploy  the service which you created in the DeployServiceToICP lab. Note that only the ldap-lab namespace is a selectable option | Success                                                      | Having Editor role gives full   management of templates and services (including publishing) |
+| Create a new   cloud connection              | Following the instructions in lab ConfigureCAM, try and create a new cloud connection | Failed                                                       | Again, this activity is only   permitted if you are the administrator |
 | Moving the   service to a different category | Find the service you created in the earlier lab using <br>Menu -> Library ->   Services.<br> Click on the options to the left and select **Move to …** <br>Select a new category to move this service to | Success                                                      | The Editor role gives permits   full management of the service |
 
 ## Useful References
