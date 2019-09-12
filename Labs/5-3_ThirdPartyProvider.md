@@ -77,12 +77,10 @@ Follow the steps below to download the "gitlab" Terraform provider and copy it t
 
    ```
    provider "gitlab" {
-       token = "${var.gitlab_token}"
-       base_url = "${var.gitlab_url}"
        insecure = "true"
    }
    ```
-
+   
 5. Initialize the Terraform directory to download the "gitlab" provider binary from the repository
 
    ```

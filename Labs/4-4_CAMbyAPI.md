@@ -19,7 +19,7 @@ Click the `Postman` icon to open Postman application.  A window warns you that t
 Notice that, you don't need to create a postman account for this lab.  Just click on the link "Take me straight to the app."
 
 ### Importing Postman Collection
-A Postman collection *cam-api.postman_collection.json* has been prepared in the git repo under the "cap-api" directory.
+A Postman collection *cam-api.postman_collection.json* has been prepared in the git repo under the "cam-api" directory.
 
 Follow the steps below to import the CAM Postman collection
 
@@ -145,7 +145,7 @@ This will return the values for a specific VMware vSphere Cloud Connection
 
 1. Click on **Params** and inspect the query param `filter` for `{"where": {"name": "Team{{lab_team_id}}_camlab" }}`
 
-    **Note:** You may need to change the `filter` field to match the name of you CAM Cloud Connection
+    **Note:** If required, you may need to change the `filter` field to match the name of the CAM Cloud Connection you have created in the previous labs.
 
 3. Click on **Tests** and inspect see how response code should be `200`, the connection should validate successfully, and a global environment variable is being set for `vsphere_connection`
 4. Click **Send**.
