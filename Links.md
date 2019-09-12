@@ -28,6 +28,10 @@
 
 [IBM Cloud Terraform Provider](https://ibm-cloud.github.io/tf-ibm-docs/index.html)
 
+[ICP Storage Overview](https://github.com/ibm-cloud-architecture/icp-admin-bootcamp/blob/master/unit-presentations/09%20-%20ICP%20Storage%20v1.0.1.pdf)
+
+[Online Swagger viewer where you can import CAM API swagger files](https://editor.swagger.io/)
+
 ### Terraform links
 
 [Terraform Module Registry](https://registry.terraform.io/)
