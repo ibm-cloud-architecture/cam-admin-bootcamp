@@ -1,38 +1,30 @@
 {
+	"variables": [],
 	"info": {
-		"_postman_id": "b62571ac-0b1f-41ba-acc6-bd3a7e6abf3a",
 		"name": "cam-api",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "f18314e5-27b8-018e-d70d-7a82580faeda",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Get Access Token",
 			"event": [
 				{
-					"listen": "prerequest",
-					"script": {
-						"id": "d580e33f-fb11-439e-b18a-426adcf83a65",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
 					"listen": "test",
 					"script": {
-						"id": "e1269ae0-5414-44cb-bea7-5aa4912db1e7",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
 							"",
 							"var responseData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"token\", responseData.access_token)"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
 			"request": {
+				"url": "https://{{cam_host}}:8443/idprovider/v1/auth/identitytoken",
 				"method": "POST",
 				"header": [
 					{
@@ -72,20 +64,6 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "https://{{cam_host}}:8443/idprovider/v1/auth/identitytoken",
-					"protocol": "https",
-					"host": [
-						"{{cam_host}}"
-					],
-					"port": "8443",
-					"path": [
-						"idprovider",
-						"v1",
-						"auth",
-						"identitytoken"
-					]
-				},
 				"description": "Gets a bearer token from ICP"
 			},
 			"response": []
@@ -96,18 +74,18 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c36c81a1-9481-483f-bbe1-75d040790cd0",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
 							"",
 							"var responseData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"tenant_id\", responseData.id)"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
 			"request": {
+				"url": "https://{{cam_host}}:30000/cam/tenant/api/v1/tenants/getTenantOnPrem",
 				"method": "GET",
 				"header": [
 					{
@@ -120,22 +98,7 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": {
-					"raw": "https://{{cam_host}}:30000/cam/tenant/api/v1/tenants/getTenantOnPrem",
-					"protocol": "https",
-					"host": [
-						"{{cam_host}}"
-					],
-					"port": "30000",
-					"path": [
-						"cam",
-						"tenant",
-						"api",
-						"v1",
-						"tenants",
-						"getTenantOnPrem"
-					]
-				}
+				"description": ""
 			},
 			"response": []
 		},
@@ -145,28 +108,15 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c3152ba0-7b24-46ba-93d1-e905ae36c4d2",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
 							""
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
 			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": " Bearer {{token}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "https://{{cam_host}}:30000/cam/api/v1/templates?tenantId={{tenant_id}}&ace_orgGuid={{icp_team}}",
 					"protocol": "https",
@@ -189,8 +139,22 @@
 							"key": "ace_orgGuid",
 							"value": "{{icp_team}}"
 						}
-					]
-				}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
 			},
 			"response": []
 		},
@@ -200,34 +164,18 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7dfe106b-b4b4-47c7-bdbf-031082c58d4c",
+						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
 							"var responseJSON = JSON.parse(responseBody);",
 							"tests[\"Connection validates successfully\"] = (true === responseJSON[0].validate);",
 							"",
 							"postman.setGlobalVariable(\"vsphere_connection\", responseJSON[0].id);"
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
 			"request": {
-				"auth": {
-					"type": "bearer"
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"type": "text",
-						"value": "Bearer {{token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "https://{{cam_host}}:30000/cam/api/v1/cloudconnections?tenantId={{tenant_id}}&ace_orgGuid={{icp_team}}&filter={\"where\": {\"name\": \"Team{{lab_team_id}}_VMware\" }}",
 					"protocol": "https",
@@ -254,29 +202,9 @@
 							"key": "filter",
 							"value": "{\"where\": {\"name\": \"Team{{lab_team_id}}_VMware\" }}"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get VSphere Cloud Provider",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "00d88cb1-3cd6-448b-96fc-0f34100c349f",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"postman.setGlobalVariable(\"provider_id\", jsonData.id);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
+					],
+					"variable": []
+				},
 				"method": "GET",
 				"header": [
 					{
@@ -289,6 +217,27 @@
 					"mode": "raw",
 					"raw": ""
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get VSphere Cloud Provider",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"provider_id\", jsonData.id);"
+						]
+					}
+				}
+			],
+			"request": {
 				"url": {
 					"raw": "https://{{cam_host}}:30000/cam/api/v1/providers/findOne?tenantId={{tenant_id}}&ace_orgGuid={{icp_team}}&filter={\"where\": {\"name\": \"VMware vSphere\" }}",
 					"protocol": "https",
@@ -316,31 +265,9 @@
 							"key": "filter",
 							"value": "{\"where\": {\"name\": \"VMware vSphere\" }}"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Templates for Single VM",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "4b1e5995-1bd3-4899-91b1-5c6a1f9f59af",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"var responseJSON = JSON.parse(responseBody);",
-							"",
-							"postman.setGlobalVariable(\"templateId\", responseJSON[0].id);",
-							"",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
+					],
+					"variable": []
+				},
 				"method": "GET",
 				"header": [
 					{
@@ -353,6 +280,29 @@
 					"mode": "raw",
 					"raw": ""
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Templates for Single VM",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var responseJSON = JSON.parse(responseBody);",
+							"",
+							"postman.setGlobalVariable(\"templateId\", responseJSON[0].id);",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
 				"url": {
 					"raw": "https://10.10.1.2:30000/cam/api/v1/templates?tenantId={{tenant_id}}&ace_orgGuid={{icp_team}}&cloudOE_spaceGuid={{icp_namespace}}&filter={\"where\": {\"name\": \"SingleVirtualMachine\" }}",
 					"protocol": "https",
@@ -386,93 +336,10 @@
 							"key": "filter",
 							"value": "{\"where\": {\"name\": \"SingleVirtualMachine\" }}"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Deploy Single VM Template",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "dc5841cc-021d-4806-9691-a00fc274b31f",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"var responseJSON = JSON.parse(responseBody);",
-							"postman.setGlobalVariable(\"stackId\", responseJSON.id);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"type": "text",
-						"value": "Bearer {{token}}"
-					},
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"IBMCloudTestJPACOCK\",\n    \"cloud_connection_ids\": [\n        \"{{vsphere_connection}}\"\n    ],\n    \"templateId\": \"{{templateId}}\",\n    \"forceCreate\": \"true\",\n    \"parameters\": [\n        {\n            \"name\": \"allow_unverified_ssl\",\n            \"type\": \"string\",\n            \"description\": \"Communication with vsphere server with self signed certificate\",\n            \"default\": true,\n            \"hidden\": true,\n            \"label\": \"Communication with vsphere server with self signed certificate\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"cloud\"\n        },\n        {\n            \"name\": \"vm_1_name\",\n            \"type\": \"string\",\n            \"description\": \"Hostname of virtual machine\",\n            \"default\": \"vm-1\",\n            \"hidden\": false,\n            \"label\": \"Vm 1 Hostname - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"vm-1-jordan\"\n        },\n        {\n            \"name\": \"vm_1_dns_servers\",\n            \"type\": \"list\",\n            \"description\": \"DNS servers for the virtual network adapter\",\n            \"hidden\": false,\n            \"label\": \"DNS Servers - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": [\"8.8.8.8\"]\n        },\n        {\n            \"name\": \"vm_1_dns_suffixes\",\n            \"type\": \"list\",\n            \"description\": \"Name resolution suffixes for the virtual network adapter\",\n            \"hidden\": false,\n            \"label\": \"DNS Suffixes - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": [\"cam.local\"]\n        },\n        {\n            \"name\": \"vm_1_root_disk_keep_on_remove\",\n            \"type\": \"string\",\n            \"description\": \"Delete template disk volume when the virtual machine is deleted\",\n            \"default\": \"false\",\n            \"hidden\": true,\n            \"label\": \"Delete template disk volume when the virtual machine is deleted - vm_1\",\n            \"secured\": false,\n            \"options\": [\n                {\n                    \"value\": \"false\",\n                    \"label\": \"False\",\n                    \"default\": \"true\"\n                },\n                {\n                    \"value\": \"true\",\n                    \"label\": \"True\"\n                }\n            ],\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_domain\",\n            \"type\": \"string\",\n            \"description\": \"Domain Name of virtual machine\",\n            \"hidden\": false,\n            \"label\": \"Domain Name - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\":\"cam.local\"\n        },\n        {\n            \"name\": \"vm_1-image\",\n            \"type\": \"string\",\n            \"description\": \"Operating system image id / template that should be used when creating the virtual image\",\n            \"hidden\": false,\n            \"label\": \"Operating System ID / Template - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\":\"rhels76-template\"\n        },\n        {\n            \"name\": \"vm_1_root_disk_size\",\n            \"type\": \"string\",\n            \"description\": \"Size of template disk volume. Should be equal to template's disk size\",\n            \"default\": \"25\",\n            \"hidden\": false,\n            \"label\": \"Root Disk Size - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_root_disk_controller_type\",\n            \"type\": \"string\",\n            \"description\": \"Type of template disk controller\",\n            \"default\": \"scsi\",\n            \"hidden\": false,\n            \"label\": \"Template Disk Controller - vm_1\",\n            \"secured\": false,\n            \"options\": [\n                {\n                    \"value\": \"scsi\",\n                    \"label\": \"scsi\",\n                    \"default\": \"true\"\n                },\n                {\n                    \"value\": \"scsi-lsi-parallel\",\n                    \"label\": \"scsi-lsi-parallel\"\n                },\n                {\n                    \"value\": \"scsi-buslogic\",\n                    \"label\": \"scsi-buslogic\"\n                },\n                {\n                    \"value\": \"scsi-paravirtual\",\n                    \"label\": \"scsi-paravirtual\"\n                },\n                {\n                    \"value\": \"scsi-isi-sas\",\n                    \"label\": \"scsi-isi-sas\"\n                },\n                { \n                    \"value\": \"ide\",\n                    \"label\": \"ide\"\n                }\n            ],\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_root_disk_datastore\",\n            \"type\": \"string\",\n            \"description\": \"Data store or storage cluster name for target virtual machine's disks\",\n            \"hidden\": false,\n            \"label\": \"Template Disk Datastore - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"D_S01_L01_500G\"\n        },\n        {\n            \"name\": \"vm_1_root_disk_type\",\n            \"type\": \"string\",\n            \"description\": \"Type of template disk volume\",\n            \"default\": \"eager_zeroed\",\n            \"hidden\": false,\n            \"label\": \"Template Disk Type - vm_1\",\n            \"secured\": false,\n            \"options\": [\n                {\n                    \"value\": \"eager_zeroed\",\n                    \"label\": \"Thick Provision Eager Zeroed\",\n                    \"default\": \"true\"\n                },\n                {\n                    \"value\": \"lazy\",\n                    \"label\": \"Thick Provision Lazy Zeroed\"\n                },\n                {\n                    \"value\": \"thin\",\n                    \"label\": \"Thin Provision\",\n                    \"group_name\": \"virtualmachine\"\n                }\n            ],\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_ipv4_gateway\",\n            \"type\": \"string\",\n            \"description\": \"IPv4 gateway for vNIC configuration\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine Gateway Address - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"10.0.0.254\"\n        },\n        {\n            \"name\": \"vm_1_ipv4_address\",\n            \"type\": \"string\",\n            \"description\": \"IPv4 address for vNIC configuration\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine IP Address - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"10.0.0.220\"\n        },\n        {\n            \"name\": \"vm_1_memory\",\n            \"type\": \"string\",\n            \"description\": \"Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024\",\n            \"default\": \"1024\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine Memory - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_ipv4_prefix_length\",\n            \"type\": \"string\",\n            \"description\": \"IPv4 prefix length for vNIC configuration. The value must be a number between 8 and 32\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine Netmask Prefix - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": 24\n        },\n        {\n            \"name\": \"vm_1_number_of_vcpu\",\n            \"type\": \"string\",\n            \"description\": \"Number of virtual CPU for the virtual machine, which is required to be a positive Integer\",\n            \"default\": \"1\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine vCPUs - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_network_interface_label\",\n            \"type\": \"string\",\n            \"description\": \"vSphere port group or network label for virtual machine's vNIC\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine vSphere Port Group - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"VM Network\"\n        },\n        {\n            \"name\": \"vm_1_cluster\",\n            \"type\": \"string\",\n            \"description\": \"Target vSphere cluster to host the virtual machine\",\n            \"hidden\": false,\n            \"label\": \"vSphere Cluster - vm_1\",\n            \"secured\": false,\n            \"required\": false,\n            \"immutable\": false,\n            \"group_name\": \"cloud\",\n            \"value\": \"DatacenterCluster\"\n        },\n        {\n            \"name\": \"vm_1_datacenter\",\n            \"type\": \"string\",\n            \"description\": \"Target vSphere datacenter for virtual machine creation\",\n            \"hidden\": false,\n            \"label\": \"vSphere Datacenter - vm_1\",\n            \"secured\": false,\n            \"required\": false,\n            \"immutable\": false,\n            \"group_name\": \"cloud\",\n            \"value\": \"Datacenter\"\n        },\n        {\n            \"name\": \"vm_1_folder\",\n            \"type\": \"string\",\n            \"description\": \"Target vSphere folder for virtual machine\",\n            \"hidden\": false,\n            \"label\": \"vSphere Folder Name - vm_1\",\n            \"secured\": false,\n            \"required\": false,\n            \"immutable\": false,\n            \"group_name\": \"cloud\",\n            \"value\": \"Target/Team2\"\n        },\n        {\n            \"name\": \"vm_1_adapter_type\",\n            \"type\": \"string\",\n            \"description\": \"Network adapter type for vNIC Configuration\",\n            \"default\": \"vmxnet3\",\n            \"hidden\": false,\n            \"label\": \"vSphere Network Adapter Type - vm_1\",\n            \"secured\": false,\n            \"options\": [\n                {\n                    \"value\": \"vmxnet3\",\n                    \"label\": \"vmxnet3\",\n                    \"default\": \"true\"\n                },\n                {\n                    \"value\": \"e1000\",\n                    \"default\": \"e1000\"\n                }\n            ],\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_resource_pool\",\n            \"type\": \"string\",\n            \"description\": \"Target vSphere Resource Pool to host the virtual machine\",\n            \"hidden\": false,\n            \"label\": \"vSphere Resource Pool - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"CAMPool\"\n        }\n    ]\n}"
+					],
+					"variable": []
 				},
-				"url": {
-					"raw": "https://{{cam_host}}:30000/cam/api/v1/stacks?tenantId={{tenant_id}}&ace_orgGuid={{icp_team}}&cloudOE_spaceGuid={{icp_namespace}}",
-					"protocol": "https",
-					"host": [
-						"{{cam_host}}"
-					],
-					"port": "30000",
-					"path": [
-						"cam",
-						"api",
-						"v1",
-						"stacks"
-					],
-					"query": [
-						{
-							"key": "tenantId",
-							"value": "{{tenant_id}}"
-						},
-						{
-							"key": "ace_orgGuid",
-							"value": "{{icp_team}}"
-						},
-						{
-							"key": "cloudOE_spaceGuid",
-							"value": "{{icp_namespace}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Stack Instance",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "4ab2113a-6d49-468e-95ca-acfb0725efac",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
@@ -484,6 +351,91 @@
 					"mode": "raw",
 					"raw": ""
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Import VM by Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var responseJSON = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"stackId\", responseJSON.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "https://{{cam_host}}:30000/cam/api/v1/stacks/import?tenantId={{tenant_id}}&cloudOE_spaceGuid={{icp_namespace}}",
+					"protocol": "https",
+					"host": [
+						"{{cam_host}}"
+					],
+					"port": "30000",
+					"path": [
+						"cam",
+						"api",
+						"v1",
+						"stacks",
+						"import"
+					],
+					"query": [
+						{
+							"key": "tenantId",
+							"value": "{{tenant_id}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "cloudOE_spaceGuid",
+							"value": "{{icp_namespace}}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"camapi-team{{lab_team_id}}\",\n  \"cloudConnectionName\": \"Team{{lab_team_id}}_VMware\",\n  \"templateName\": \"Import existing VM with a single disk - VMware vSphere\",\n  \"templateVersionName\": \"1.0\",\n  \"idFromProvider\": \"/Datacenter/vm/Target/Team{{lab_team_id}}/camapi-team{{lab_team_id}}\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Stack Instance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
 				"url": {
 					"raw": "https://{{cam_host}}:30000/cam/api/v1/stacks/{{stackId}}/retrieve?tenantId={{tenant_id}}&ace_orgGuid={{icp_team}}&cloudOE_spaceGuid={{icp_namespace}}",
 					"protocol": "https",
@@ -512,14 +464,59 @@
 							"key": "cloudOE_spaceGuid",
 							"value": "{{icp_namespace}}"
 						}
-					]
-				}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
 			},
 			"response": []
 		},
 		{
 			"name": "Destroy Stack Instance",
 			"request": {
+				"url": {
+					"raw": "https://{{cam_host}}:30000/cam/api/v1/stacks/{{stackId}}/delete?tenantId={{tenant_id}}&ace_orgGuid={{icp_team}}&cloudOE_spaceGuid={{icp_namespace}}",
+					"protocol": "https",
+					"host": [
+						"{{cam_host}}"
+					],
+					"port": "30000",
+					"path": [
+						"cam",
+						"api",
+						"v1",
+						"stacks",
+						"{{stackId}}",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "tenantId",
+							"value": "{{tenant_id}}"
+						},
+						{
+							"key": "ace_orgGuid",
+							"value": "{{icp_team}}"
+						},
+						{
+							"key": "cloudOE_spaceGuid",
+							"value": "{{icp_namespace}}"
+						}
+					],
+					"variable": []
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -532,6 +529,13 @@
 					"mode": "raw",
 					"raw": ""
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Stack Instance",
+			"request": {
 				"url": {
 					"raw": "https://{{cam_host}}:30000/cam/api/v1/stacks/{{stackId}}/delete?tenantId={{tenant_id}}&ace_orgGuid={{icp_team}}&cloudOE_spaceGuid={{icp_namespace}}",
 					"protocol": "https",
@@ -560,14 +564,9 @@
 							"key": "cloudOE_spaceGuid",
 							"value": "{{icp_namespace}}"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Stack Instance",
-			"request": {
+					],
+					"variable": []
+				},
 				"method": "DELETE",
 				"header": [
 					{
@@ -580,8 +579,28 @@
 					"mode": "raw",
 					"raw": ""
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Deploy Single VM Template",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var responseJSON = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"stackId\", responseJSON.id);"
+						]
+					}
+				}
+			],
+			"request": {
 				"url": {
-					"raw": "https://{{cam_host}}:30000/cam/api/v1/stacks/{{stackId}}/delete?tenantId={{tenant_id}}&ace_orgGuid={{icp_team}}&cloudOE_spaceGuid={{icp_namespace}}",
+					"raw": "https://{{cam_host}}:30000/cam/api/v1/stacks?tenantId={{tenant_id}}&ace_orgGuid={{icp_team}}&cloudOE_spaceGuid={{icp_namespace}}",
 					"protocol": "https",
 					"host": [
 						"{{cam_host}}"
@@ -591,57 +610,50 @@
 						"cam",
 						"api",
 						"v1",
-						"stacks",
-						"{{stackId}}",
-						"delete"
+						"stacks"
 					],
 					"query": [
 						{
 							"key": "tenantId",
-							"value": "{{tenant_id}}"
+							"value": "{{tenant_id}}",
+							"equals": true,
+							"description": ""
 						},
 						{
 							"key": "ace_orgGuid",
-							"value": "{{icp_team}}"
+							"value": "{{icp_team}}",
+							"equals": true,
+							"description": ""
 						},
 						{
 							"key": "cloudOE_spaceGuid",
-							"value": "{{icp_namespace}}"
+							"value": "{{icp_namespace}}",
+							"equals": true,
+							"description": ""
 						}
-					]
-				}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"IBMCloudTest_team{{lab_team_id}}\",\n    \"cloud_connection_ids\": [\n        \"{{vsphere_connection}}\"\n    ],\n    \"templateId\": \"{{templateId}}\",\n    \"forceCreate\": \"true\",\n    \"parameters\": [\n        {\n            \"name\": \"allow_unverified_ssl\",\n            \"type\": \"string\",\n            \"description\": \"Communication with vsphere server with self signed certificate\",\n            \"default\": true,\n            \"hidden\": true,\n            \"label\": \"Communication with vsphere server with self signed certificate\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"cloud\"\n        },\n        {\n            \"name\": \"vm_1_name\",\n            \"type\": \"string\",\n            \"description\": \"Hostname of virtual machine\",\n            \"default\": \"vm-1\",\n            \"hidden\": false,\n            \"label\": \"Vm 1 Hostname - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"camapi-team{{lab_team_id}}\"\n        },\n        {\n            \"name\": \"vm_1_dns_servers\",\n            \"type\": \"list\",\n            \"description\": \"DNS servers for the virtual network adapter\",\n            \"hidden\": false,\n            \"label\": \"DNS Servers - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": [\"8.8.8.8\"]\n        },\n        {\n            \"name\": \"vm_1_dns_suffixes\",\n            \"type\": \"list\",\n            \"description\": \"Name resolution suffixes for the virtual network adapter\",\n            \"hidden\": false,\n            \"label\": \"DNS Suffixes - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": [\"cam.local\"]\n        },\n        {\n            \"name\": \"vm_1_root_disk_keep_on_remove\",\n            \"type\": \"string\",\n            \"description\": \"Delete template disk volume when the virtual machine is deleted\",\n            \"default\": \"false\",\n            \"hidden\": true,\n            \"label\": \"Delete template disk volume when the virtual machine is deleted - vm_1\",\n            \"secured\": false,\n            \"options\": [\n                {\n                    \"value\": \"false\",\n                    \"label\": \"False\",\n                    \"default\": \"true\"\n                },\n                {\n                    \"value\": \"true\",\n                    \"label\": \"True\"\n                }\n            ],\n            \"value\": \"true\",\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_domain\",\n            \"type\": \"string\",\n            \"description\": \"Domain Name of virtual machine\",\n            \"hidden\": false,\n            \"label\": \"Domain Name - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\":\"cam.local\"\n        },\n        {\n            \"name\": \"vm_1-image\",\n            \"type\": \"string\",\n            \"description\": \"Operating system image id / template that should be used when creating the virtual image\",\n            \"hidden\": false,\n            \"label\": \"Operating System ID / Template - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\":\"rhels76-template\"\n        },\n        {\n            \"name\": \"vm_1_root_disk_size\",\n            \"type\": \"string\",\n            \"description\": \"Size of template disk volume. Should be equal to template's disk size\",\n            \"default\": \"25\",\n            \"hidden\": false,\n            \"label\": \"Root Disk Size - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_root_disk_controller_type\",\n            \"type\": \"string\",\n            \"description\": \"Type of template disk controller\",\n            \"default\": \"scsi\",\n            \"hidden\": false,\n            \"label\": \"Template Disk Controller - vm_1\",\n            \"secured\": false,\n            \"options\": [\n                {\n                    \"value\": \"scsi\",\n                    \"label\": \"scsi\",\n                    \"default\": \"true\"\n                },\n                {\n                    \"value\": \"scsi-lsi-parallel\",\n                    \"label\": \"scsi-lsi-parallel\"\n                },\n                {\n                    \"value\": \"scsi-buslogic\",\n                    \"label\": \"scsi-buslogic\"\n                },\n                {\n                    \"value\": \"scsi-paravirtual\",\n                    \"label\": \"scsi-paravirtual\"\n                },\n                {\n                    \"value\": \"scsi-isi-sas\",\n                    \"label\": \"scsi-isi-sas\"\n                },\n                { \n                    \"value\": \"ide\",\n                    \"label\": \"ide\"\n                }\n            ],\n            \"value\": \"scsi\",\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_root_disk_datastore\",\n            \"type\": \"string\",\n            \"description\": \"Data store or storage cluster name for target virtual machine's disks\",\n            \"hidden\": false,\n            \"label\": \"Template Disk Datastore - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"D_S01_L01_500G\"\n        },\n        {\n            \"name\": \"vm_1_root_disk_type\",\n            \"type\": \"string\",\n            \"description\": \"Type of template disk volume\",\n            \"default\": \"eager_zeroed\",\n            \"hidden\": false,\n            \"label\": \"Template Disk Type - vm_1\",\n            \"secured\": false,\n            \"options\": [\n                {\n                    \"value\": \"eager_zeroed\",\n                    \"label\": \"Thick Provision Eager Zeroed\",\n                    \"default\": \"true\"\n                },\n                {\n                    \"value\": \"lazy\",\n                    \"label\": \"Thick Provision Lazy Zeroed\"\n                },\n                {\n                    \"value\": \"thin\",\n                    \"label\": \"Thin Provision\",\n                    \"group_name\": \"virtualmachine\"\n                }\n            ],\n            \"value\": \"thin\",\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_ipv4_gateway\",\n            \"type\": \"string\",\n            \"description\": \"IPv4 gateway for vNIC configuration\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine Gateway Address - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"10.0.0.254\"\n        },\n        {\n            \"name\": \"vm_1_ipv4_address\",\n            \"type\": \"string\",\n            \"description\": \"IPv4 address for vNIC configuration\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine IP Address - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"10.0.0.220\"\n        },\n        {\n            \"name\": \"vm_1_memory\",\n            \"type\": \"string\",\n            \"description\": \"Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024\",\n            \"default\": \"1024\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine Memory - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_ipv4_prefix_length\",\n            \"type\": \"string\",\n            \"description\": \"IPv4 prefix length for vNIC configuration. The value must be a number between 8 and 32\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine Netmask Prefix - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": 24\n        },\n        {\n            \"name\": \"vm_1_number_of_vcpu\",\n            \"type\": \"string\",\n            \"description\": \"Number of virtual CPU for the virtual machine, which is required to be a positive Integer\",\n            \"default\": \"1\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine vCPUs - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_network_interface_label\",\n            \"type\": \"string\",\n            \"description\": \"vSphere port group or network label for virtual machine's vNIC\",\n            \"hidden\": false,\n            \"label\": \"Virtual Machine vSphere Port Group - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"VM Network\"\n        },\n        {\n            \"name\": \"vm_1_cluster\",\n            \"type\": \"string\",\n            \"description\": \"Target vSphere cluster to host the virtual machine\",\n            \"hidden\": false,\n            \"label\": \"vSphere Cluster - vm_1\",\n            \"secured\": false,\n            \"required\": false,\n            \"immutable\": false,\n            \"group_name\": \"cloud\",\n            \"value\": \"DatacenterCluster\"\n        },\n        {\n            \"name\": \"vm_1_datacenter\",\n            \"type\": \"string\",\n            \"description\": \"Target vSphere datacenter for virtual machine creation\",\n            \"hidden\": false,\n            \"label\": \"vSphere Datacenter - vm_1\",\n            \"secured\": false,\n            \"required\": false,\n            \"immutable\": false,\n            \"group_name\": \"cloud\",\n            \"value\": \"Datacenter\"\n        },\n        {\n            \"name\": \"vm_1_folder\",\n            \"type\": \"string\",\n            \"description\": \"Target vSphere folder for virtual machine\",\n            \"hidden\": false,\n            \"label\": \"vSphere Folder Name - vm_1\",\n            \"secured\": false,\n            \"required\": false,\n            \"immutable\": false,\n            \"group_name\": \"cloud\",\n            \"value\": \"Target/Team{{lab_team_id}}\"\n        },\n        {\n            \"name\": \"vm_1_adapter_type\",\n            \"type\": \"string\",\n            \"description\": \"Network adapter type for vNIC Configuration\",\n            \"default\": \"vmxnet3\",\n            \"hidden\": false,\n            \"label\": \"vSphere Network Adapter Type - vm_1\",\n            \"secured\": false,\n            \"options\": [\n                {\n                    \"value\": \"vmxnet3\",\n                    \"label\": \"vmxnet3\",\n                    \"default\": \"true\"\n                },\n                {\n                    \"value\": \"e1000\",\n                    \"default\": \"e1000\"\n                }\n            ],\n            \"value\": \"vmxnet3\",\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\"\n        },\n        {\n            \"name\": \"vm_1_resource_pool\",\n            \"type\": \"string\",\n            \"description\": \"Target vSphere Resource Pool to host the virtual machine\",\n            \"hidden\": false,\n            \"label\": \"vSphere Resource Pool - vm_1\",\n            \"secured\": false,\n            \"required\": true,\n            \"immutable\": false,\n            \"group_name\": \"virtualmachine\",\n            \"value\": \"CAMPool\"\n        }\n    ]\n}"
+				},
+				"description": "Fixed parameters"
 			},
 			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"id": "6dfb0ac0-ed5c-43bf-bb5b-3b3bc54f7570",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"id": "ffc99af6-5a0c-4df3-9cf9-c0e090413a20",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"id": "d73a70d6-407a-4ab5-9d17-1920d38a30a4",
-			"key": "cam_host",
-			"value": "10.10.1.2",
-			"type": "string"
 		}
 	]
 }
